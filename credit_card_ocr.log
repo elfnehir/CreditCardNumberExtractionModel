@@ -1,0 +1,1111 @@
+2025-05-22 18:26:55,782 - WARNING - PyYAML not installed. Configuration will use default values.
+2025-05-22 18:27:00,795 - WARNING - PyYAML not installed. Configuration will use default values.
+2025-05-22 18:27:00,831 - WARNING - PyYAML not installed. Configuration will use default values.
+2025-05-22 18:27:02,455 - ERROR - Error in train_model: mat1 and mat2 shapes cannot be multiplied (64x32 and 128x512)
+2025-05-22 18:27:02,455 - ERROR - Error in main: mat1 and mat2 shapes cannot be multiplied (64x32 and 128x512)
+2025-05-22 18:27:07,685 - WARNING - PyYAML not installed. Configuration will use default values.
+2025-05-22 18:27:12,539 - WARNING - PyYAML not installed. Configuration will use default values.
+2025-05-22 18:27:12,571 - WARNING - PyYAML not installed. Configuration will use default values.
+2025-05-22 18:27:13,913 - ERROR - Error in train_model: mat1 and mat2 shapes cannot be multiplied (64x32 and 128x512)
+2025-05-22 18:27:13,914 - ERROR - Error in main: mat1 and mat2 shapes cannot be multiplied (64x32 and 128x512)
+2025-05-22 18:28:24,689 - WARNING - PyYAML not installed. Configuration will use default values.
+2025-05-22 18:28:24,989 - INFO - Input tensor shape: torch.Size([885, 1, 32, 32])
+2025-05-22 18:28:25,108 - INFO - Model architecture:
+AdvancedCreditCardNet(
+  (conv1): Sequential(
+    (0): Conv2d(1, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): ReLU(inplace=True)
+  )
+  (layer1): Sequential(
+    (0): ResidualBlock(
+      (conv1): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential()
+      (se): SEBlock(
+        (squeeze): AdaptiveAvgPool2d(output_size=1)
+        (excitation): Sequential(
+          (0): Linear(in_features=32, out_features=2, bias=False)
+          (1): ReLU(inplace=True)
+          (2): Linear(in_features=2, out_features=32, bias=False)
+          (3): Sigmoid()
+        )
+      )
+      (attention): AttentionBlock(
+        (query): Conv2d(32, 4, kernel_size=(1, 1), stride=(1, 1))
+        (key): Conv2d(32, 4, kernel_size=(1, 1), stride=(1, 1))
+        (value): Conv2d(32, 32, kernel_size=(1, 1), stride=(1, 1))
+      )
+      (dropout): Dropout2d(p=0.2, inplace=False)
+    )
+    (1): ResidualBlock(
+      (conv1): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential()
+      (se): SEBlock(
+        (squeeze): AdaptiveAvgPool2d(output_size=1)
+        (excitation): Sequential(
+          (0): Linear(in_features=32, out_features=2, bias=False)
+          (1): ReLU(inplace=True)
+          (2): Linear(in_features=2, out_features=32, bias=False)
+          (3): Sigmoid()
+        )
+      )
+      (attention): AttentionBlock(
+        (query): Conv2d(32, 4, kernel_size=(1, 1), stride=(1, 1))
+        (key): Conv2d(32, 4, kernel_size=(1, 1), stride=(1, 1))
+        (value): Conv2d(32, 32, kernel_size=(1, 1), stride=(1, 1))
+      )
+      (dropout): Dropout2d(p=0.2, inplace=False)
+    )
+  )
+  (layer2): Sequential(
+    (0): ResidualBlock(
+      (conv1): Conv2d(32, 64, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential(
+        (0): Conv2d(32, 64, kernel_size=(1, 1), stride=(2, 2), bias=False)
+        (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+      (se): SEBlock(
+        (squeeze): AdaptiveAvgPool2d(output_size=1)
+        (excitation): Sequential(
+          (0): Linear(in_features=64, out_features=4, bias=False)
+          (1): ReLU(inplace=True)
+          (2): Linear(in_features=4, out_features=64, bias=False)
+          (3): Sigmoid()
+        )
+      )
+      (attention): AttentionBlock(
+        (query): Conv2d(64, 8, kernel_size=(1, 1), stride=(1, 1))
+        (key): Conv2d(64, 8, kernel_size=(1, 1), stride=(1, 1))
+        (value): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+      )
+      (dropout): Dropout2d(p=0.2, inplace=False)
+    )
+    (1): ResidualBlock(
+      (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential()
+      (se): SEBlock(
+        (squeeze): AdaptiveAvgPool2d(output_size=1)
+        (excitation): Sequential(
+          (0): Linear(in_features=64, out_features=4, bias=False)
+          (1): ReLU(inplace=True)
+          (2): Linear(in_features=4, out_features=64, bias=False)
+          (3): Sigmoid()
+        )
+      )
+      (attention): AttentionBlock(
+        (query): Conv2d(64, 8, kernel_size=(1, 1), stride=(1, 1))
+        (key): Conv2d(64, 8, kernel_size=(1, 1), stride=(1, 1))
+        (value): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+      )
+      (dropout): Dropout2d(p=0.2, inplace=False)
+    )
+  )
+  (layer3): Sequential(
+    (0): ResidualBlock(
+      (conv1): Conv2d(64, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential(
+        (0): Conv2d(64, 128, kernel_size=(1, 1), stride=(2, 2), bias=False)
+        (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+      (se): SEBlock(
+        (squeeze): AdaptiveAvgPool2d(output_size=1)
+        (excitation): Sequential(
+          (0): Linear(in_features=128, out_features=8, bias=False)
+          (1): ReLU(inplace=True)
+          (2): Linear(in_features=8, out_features=128, bias=False)
+          (3): Sigmoid()
+        )
+      )
+      (attention): AttentionBlock(
+        (query): Conv2d(128, 16, kernel_size=(1, 1), stride=(1, 1))
+        (key): Conv2d(128, 16, kernel_size=(1, 1), stride=(1, 1))
+        (value): Conv2d(128, 128, kernel_size=(1, 1), stride=(1, 1))
+      )
+      (dropout): Dropout2d(p=0.2, inplace=False)
+    )
+    (1): ResidualBlock(
+      (conv1): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential()
+      (se): SEBlock(
+        (squeeze): AdaptiveAvgPool2d(output_size=1)
+        (excitation): Sequential(
+          (0): Linear(in_features=128, out_features=8, bias=False)
+          (1): ReLU(inplace=True)
+          (2): Linear(in_features=8, out_features=128, bias=False)
+          (3): Sigmoid()
+        )
+      )
+      (attention): AttentionBlock(
+        (query): Conv2d(128, 16, kernel_size=(1, 1), stride=(1, 1))
+        (key): Conv2d(128, 16, kernel_size=(1, 1), stride=(1, 1))
+        (value): Conv2d(128, 128, kernel_size=(1, 1), stride=(1, 1))
+      )
+      (dropout): Dropout2d(p=0.2, inplace=False)
+    )
+  )
+  (fpn1): FPNBlock(
+    (conv1): Conv2d(128, 64, kernel_size=(1, 1), stride=(1, 1))
+    (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (upsample): Upsample(scale_factor=2.0, mode='bilinear')
+  )
+  (fpn2): FPNBlock(
+    (conv1): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1))
+    (conv2): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (upsample): Upsample(scale_factor=2.0, mode='bilinear')
+  )
+  (classifier): Sequential(
+    (0): AdaptiveAvgPool2d(output_size=1)
+    (1): Flatten(start_dim=1, end_dim=-1)
+    (2): Linear(in_features=32, out_features=512, bias=True)
+    (3): BatchNorm1d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (4): ReLU(inplace=True)
+    (5): Dropout(p=0.3, inplace=False)
+    (6): Linear(in_features=512, out_features=10, bias=True)
+  )
+)
+2025-05-22 18:28:29,545 - WARNING - PyYAML not installed. Configuration will use default values.
+2025-05-22 18:28:29,560 - WARNING - PyYAML not installed. Configuration will use default values.
+2025-05-22 18:28:55,068 - WARNING - PyYAML not installed. Configuration will use default values.
+2025-05-22 18:28:55,068 - WARNING - PyYAML not installed. Configuration will use default values.
+2025-05-22 18:28:56,504 - INFO - Epoch [1/100] (31.39s)
+2025-05-22 18:28:56,504 - INFO - Train Loss: 2.3964, Train Acc: 10.45%
+2025-05-22 18:28:56,505 - INFO - Val Loss: 2.3703, Val Acc: 7.34%
+2025-05-22 18:29:01,102 - WARNING - PyYAML not installed. Configuration will use default values.
+2025-05-22 18:29:01,120 - WARNING - PyYAML not installed. Configuration will use default values.
+2025-05-22 18:29:25,121 - WARNING - PyYAML not installed. Configuration will use default values.
+2025-05-22 18:29:25,123 - WARNING - PyYAML not installed. Configuration will use default values.
+2025-05-22 18:29:26,589 - INFO - Epoch [2/100] (30.08s)
+2025-05-22 18:29:26,590 - INFO - Train Loss: 2.3298, Train Acc: 12.71%
+2025-05-22 18:29:26,590 - INFO - Val Loss: 2.3860, Val Acc: 14.12%
+2025-05-22 18:29:30,986 - WARNING - PyYAML not installed. Configuration will use default values.
+2025-05-22 18:29:31,028 - WARNING - PyYAML not installed. Configuration will use default values.
+2025-05-22 18:29:54,360 - WARNING - PyYAML not installed. Configuration will use default values.
+2025-05-22 18:29:54,369 - WARNING - PyYAML not installed. Configuration will use default values.
+2025-05-22 18:29:56,481 - INFO - Epoch [3/100] (29.89s)
+2025-05-22 18:29:56,481 - INFO - Train Loss: 2.2479, Train Acc: 14.83%
+2025-05-22 18:29:56,482 - INFO - Val Loss: 2.2658, Val Acc: 14.12%
+2025-05-22 18:30:00,906 - WARNING - PyYAML not installed. Configuration will use default values.
+2025-05-22 18:30:00,947 - WARNING - PyYAML not installed. Configuration will use default values.
+2025-05-22 18:30:24,281 - WARNING - PyYAML not installed. Configuration will use default values.
+2025-05-22 18:30:24,282 - WARNING - PyYAML not installed. Configuration will use default values.
+2025-05-22 18:30:26,957 - INFO - Epoch [4/100] (30.48s)
+2025-05-22 18:30:26,957 - INFO - Train Loss: 2.1867, Train Acc: 16.95%
+2025-05-22 18:30:26,958 - INFO - Val Loss: 2.2441, Val Acc: 17.51%
+2025-05-22 18:30:31,446 - WARNING - PyYAML not installed. Configuration will use default values.
+2025-05-22 18:30:31,460 - WARNING - PyYAML not installed. Configuration will use default values.
+2025-05-22 18:30:57,337 - WARNING - PyYAML not installed. Configuration will use default values.
+2025-05-22 18:30:57,342 - WARNING - PyYAML not installed. Configuration will use default values.
+2025-05-22 18:31:00,254 - INFO - Epoch [5/100] (33.30s)
+2025-05-22 18:31:00,254 - INFO - Train Loss: 2.1224, Train Acc: 20.90%
+2025-05-22 18:31:00,255 - INFO - Val Loss: 1.8803, Val Acc: 27.68%
+2025-05-22 18:31:04,781 - WARNING - PyYAML not installed. Configuration will use default values.
+2025-05-22 18:31:04,790 - WARNING - PyYAML not installed. Configuration will use default values.
+2025-05-22 18:31:32,851 - WARNING - PyYAML not installed. Configuration will use default values.
+2025-05-22 18:31:32,852 - WARNING - PyYAML not installed. Configuration will use default values.
+2025-05-22 18:31:35,664 - INFO - Epoch [6/100] (35.41s)
+2025-05-22 18:31:35,664 - INFO - Train Loss: 1.8788, Train Acc: 29.94%
+2025-05-22 18:31:35,665 - INFO - Val Loss: 1.8129, Val Acc: 27.68%
+2025-05-22 18:31:40,423 - WARNING - PyYAML not installed. Configuration will use default values.
+2025-05-22 18:31:40,573 - WARNING - PyYAML not installed. Configuration will use default values.
+2025-05-22 18:32:23,419 - WARNING - PyYAML not installed. Configuration will use default values.
+2025-05-22 18:32:23,421 - WARNING - PyYAML not installed. Configuration will use default values.
+2025-05-22 18:32:39,429 - INFO - Epoch [7/100] (63.76s)
+2025-05-22 18:32:39,430 - INFO - Train Loss: 1.7341, Train Acc: 36.58%
+2025-05-22 18:32:39,430 - INFO - Val Loss: 1.4972, Val Acc: 48.59%
+2025-05-22 18:32:45,596 - WARNING - PyYAML not installed. Configuration will use default values.
+2025-05-22 18:32:45,596 - WARNING - PyYAML not installed. Configuration will use default values.
+2025-05-22 18:34:01,469 - WARNING - PyYAML not installed. Configuration will use default values.
+2025-05-22 18:34:01,477 - WARNING - PyYAML not installed. Configuration will use default values.
+2025-05-22 18:34:04,545 - INFO - Epoch [8/100] (85.11s)
+2025-05-22 18:34:04,545 - INFO - Train Loss: 1.5223, Train Acc: 46.75%
+2025-05-22 18:34:04,545 - INFO - Val Loss: 1.3229, Val Acc: 49.72%
+2025-05-22 18:34:09,128 - WARNING - PyYAML not installed. Configuration will use default values.
+2025-05-22 18:34:09,201 - WARNING - PyYAML not installed. Configuration will use default values.
+2025-05-22 18:34:36,923 - WARNING - PyYAML not installed. Configuration will use default values.
+2025-05-22 18:34:36,923 - WARNING - PyYAML not installed. Configuration will use default values.
+2025-05-22 18:34:39,909 - INFO - Epoch [9/100] (35.36s)
+2025-05-22 18:34:39,909 - INFO - Train Loss: 1.4583, Train Acc: 52.68%
+2025-05-22 18:34:39,909 - INFO - Val Loss: 1.2645, Val Acc: 54.24%
+2025-05-22 18:34:44,588 - WARNING - PyYAML not installed. Configuration will use default values.
+2025-05-22 18:34:44,645 - WARNING - PyYAML not installed. Configuration will use default values.
+2025-05-22 18:35:36,657 - WARNING - PyYAML not installed. Configuration will use default values.
+2025-05-22 18:35:36,963 - INFO - Input tensor shape: torch.Size([885, 1, 32, 32])
+2025-05-22 18:35:37,080 - INFO - Model architecture:
+AdvancedCreditCardNet(
+  (conv1): Sequential(
+    (0): Conv2d(1, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): ReLU(inplace=True)
+  )
+  (layer1): Sequential(
+    (0): ResidualBlock(
+      (conv1): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential()
+      (se): SEBlock(
+        (squeeze): AdaptiveAvgPool2d(output_size=1)
+        (excitation): Sequential(
+          (0): Linear(in_features=32, out_features=2, bias=False)
+          (1): ReLU(inplace=True)
+          (2): Linear(in_features=2, out_features=32, bias=False)
+          (3): Sigmoid()
+        )
+      )
+      (attention): AttentionBlock(
+        (query): Conv2d(32, 4, kernel_size=(1, 1), stride=(1, 1))
+        (key): Conv2d(32, 4, kernel_size=(1, 1), stride=(1, 1))
+        (value): Conv2d(32, 32, kernel_size=(1, 1), stride=(1, 1))
+      )
+      (dropout): Dropout2d(p=0.2, inplace=False)
+    )
+    (1): ResidualBlock(
+      (conv1): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential()
+      (se): SEBlock(
+        (squeeze): AdaptiveAvgPool2d(output_size=1)
+        (excitation): Sequential(
+          (0): Linear(in_features=32, out_features=2, bias=False)
+          (1): ReLU(inplace=True)
+          (2): Linear(in_features=2, out_features=32, bias=False)
+          (3): Sigmoid()
+        )
+      )
+      (attention): AttentionBlock(
+        (query): Conv2d(32, 4, kernel_size=(1, 1), stride=(1, 1))
+        (key): Conv2d(32, 4, kernel_size=(1, 1), stride=(1, 1))
+        (value): Conv2d(32, 32, kernel_size=(1, 1), stride=(1, 1))
+      )
+      (dropout): Dropout2d(p=0.2, inplace=False)
+    )
+  )
+  (layer2): Sequential(
+    (0): ResidualBlock(
+      (conv1): Conv2d(32, 64, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential(
+        (0): Conv2d(32, 64, kernel_size=(1, 1), stride=(2, 2), bias=False)
+        (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+      (se): SEBlock(
+        (squeeze): AdaptiveAvgPool2d(output_size=1)
+        (excitation): Sequential(
+          (0): Linear(in_features=64, out_features=4, bias=False)
+          (1): ReLU(inplace=True)
+          (2): Linear(in_features=4, out_features=64, bias=False)
+          (3): Sigmoid()
+        )
+      )
+      (attention): AttentionBlock(
+        (query): Conv2d(64, 8, kernel_size=(1, 1), stride=(1, 1))
+        (key): Conv2d(64, 8, kernel_size=(1, 1), stride=(1, 1))
+        (value): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+      )
+      (dropout): Dropout2d(p=0.2, inplace=False)
+    )
+    (1): ResidualBlock(
+      (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential()
+      (se): SEBlock(
+        (squeeze): AdaptiveAvgPool2d(output_size=1)
+        (excitation): Sequential(
+          (0): Linear(in_features=64, out_features=4, bias=False)
+          (1): ReLU(inplace=True)
+          (2): Linear(in_features=4, out_features=64, bias=False)
+          (3): Sigmoid()
+        )
+      )
+      (attention): AttentionBlock(
+        (query): Conv2d(64, 8, kernel_size=(1, 1), stride=(1, 1))
+        (key): Conv2d(64, 8, kernel_size=(1, 1), stride=(1, 1))
+        (value): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+      )
+      (dropout): Dropout2d(p=0.2, inplace=False)
+    )
+  )
+  (layer3): Sequential(
+    (0): ResidualBlock(
+      (conv1): Conv2d(64, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential(
+        (0): Conv2d(64, 128, kernel_size=(1, 1), stride=(2, 2), bias=False)
+        (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+      (se): SEBlock(
+        (squeeze): AdaptiveAvgPool2d(output_size=1)
+        (excitation): Sequential(
+          (0): Linear(in_features=128, out_features=8, bias=False)
+          (1): ReLU(inplace=True)
+          (2): Linear(in_features=8, out_features=128, bias=False)
+          (3): Sigmoid()
+        )
+      )
+      (attention): AttentionBlock(
+        (query): Conv2d(128, 16, kernel_size=(1, 1), stride=(1, 1))
+        (key): Conv2d(128, 16, kernel_size=(1, 1), stride=(1, 1))
+        (value): Conv2d(128, 128, kernel_size=(1, 1), stride=(1, 1))
+      )
+      (dropout): Dropout2d(p=0.2, inplace=False)
+    )
+    (1): ResidualBlock(
+      (conv1): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential()
+      (se): SEBlock(
+        (squeeze): AdaptiveAvgPool2d(output_size=1)
+        (excitation): Sequential(
+          (0): Linear(in_features=128, out_features=8, bias=False)
+          (1): ReLU(inplace=True)
+          (2): Linear(in_features=8, out_features=128, bias=False)
+          (3): Sigmoid()
+        )
+      )
+      (attention): AttentionBlock(
+        (query): Conv2d(128, 16, kernel_size=(1, 1), stride=(1, 1))
+        (key): Conv2d(128, 16, kernel_size=(1, 1), stride=(1, 1))
+        (value): Conv2d(128, 128, kernel_size=(1, 1), stride=(1, 1))
+      )
+      (dropout): Dropout2d(p=0.2, inplace=False)
+    )
+  )
+  (fpn1): FPNBlock(
+    (conv1): Conv2d(128, 64, kernel_size=(1, 1), stride=(1, 1))
+    (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (upsample): Upsample(scale_factor=2.0, mode='bilinear')
+  )
+  (fpn2): FPNBlock(
+    (conv1): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1))
+    (conv2): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (upsample): Upsample(scale_factor=2.0, mode='bilinear')
+  )
+  (classifier): Sequential(
+    (0): AdaptiveAvgPool2d(output_size=1)
+    (1): Flatten(start_dim=1, end_dim=-1)
+    (2): Linear(in_features=32, out_features=512, bias=True)
+    (3): BatchNorm1d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (4): ReLU(inplace=True)
+    (5): Dropout(p=0.3, inplace=False)
+    (6): Linear(in_features=512, out_features=10, bias=True)
+  )
+)
+2025-05-22 18:35:41,669 - WARNING - PyYAML not installed. Configuration will use default values.
+2025-05-22 18:35:41,675 - WARNING - PyYAML not installed. Configuration will use default values.
+2025-05-22 18:36:04,695 - WARNING - PyYAML not installed. Configuration will use default values.
+2025-05-22 18:36:04,695 - WARNING - PyYAML not installed. Configuration will use default values.
+2025-05-22 18:36:06,082 - INFO - Epoch [1/100] (29.00s)
+2025-05-22 18:36:06,082 - INFO - Train Loss: 2.3835, Train Acc: 10.03%
+2025-05-22 18:36:06,083 - INFO - Val Loss: 2.6828, Val Acc: 14.69%
+2025-05-22 18:36:10,667 - WARNING - PyYAML not installed. Configuration will use default values.
+2025-05-22 18:36:10,688 - WARNING - PyYAML not installed. Configuration will use default values.
+2025-05-22 18:36:33,130 - WARNING - PyYAML not installed. Configuration will use default values.
+2025-05-22 18:36:33,131 - WARNING - PyYAML not installed. Configuration will use default values.
+2025-05-22 18:36:34,593 - INFO - Epoch [2/100] (28.51s)
+2025-05-22 18:36:34,593 - INFO - Train Loss: 2.3252, Train Acc: 12.71%
+2025-05-22 18:36:34,593 - INFO - Val Loss: 2.3972, Val Acc: 9.60%
+2025-05-22 18:36:39,483 - WARNING - PyYAML not installed. Configuration will use default values.
+2025-05-22 18:36:39,580 - WARNING - PyYAML not installed. Configuration will use default values.
+2025-05-22 18:37:02,675 - WARNING - PyYAML not installed. Configuration will use default values.
+2025-05-22 18:37:02,681 - WARNING - PyYAML not installed. Configuration will use default values.
+2025-05-22 18:37:04,666 - INFO - Epoch [3/100] (30.07s)
+2025-05-22 18:37:04,667 - INFO - Train Loss: 2.2282, Train Acc: 18.64%
+2025-05-22 18:37:04,667 - INFO - Val Loss: 2.2464, Val Acc: 15.82%
+2025-05-22 18:37:09,726 - WARNING - PyYAML not installed. Configuration will use default values.
+2025-05-22 18:37:09,845 - WARNING - PyYAML not installed. Configuration will use default values.
+2025-05-22 18:37:40,167 - WARNING - PyYAML not installed. Configuration will use default values.
+2025-05-22 18:37:40,211 - WARNING - PyYAML not installed. Configuration will use default values.
+2025-05-22 18:38:28,675 - INFO - Input tensor shape: torch.Size([885, 1, 32, 32])
+2025-05-22 18:38:28,814 - INFO - Model architecture:
+AdvancedCreditCardNet(
+  (conv1): Sequential(
+    (0): Conv2d(1, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): ReLU(inplace=True)
+  )
+  (layer1): Sequential(
+    (0): ResidualBlock(
+      (conv1): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential()
+      (se): SEBlock(
+        (squeeze): AdaptiveAvgPool2d(output_size=1)
+        (excitation): Sequential(
+          (0): Linear(in_features=32, out_features=2, bias=False)
+          (1): ReLU(inplace=True)
+          (2): Linear(in_features=2, out_features=32, bias=False)
+          (3): Sigmoid()
+        )
+      )
+      (attention): AttentionBlock(
+        (query): Conv2d(32, 4, kernel_size=(1, 1), stride=(1, 1))
+        (key): Conv2d(32, 4, kernel_size=(1, 1), stride=(1, 1))
+        (value): Conv2d(32, 32, kernel_size=(1, 1), stride=(1, 1))
+      )
+      (dropout): Dropout2d(p=0.2, inplace=False)
+    )
+    (1): ResidualBlock(
+      (conv1): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential()
+      (se): SEBlock(
+        (squeeze): AdaptiveAvgPool2d(output_size=1)
+        (excitation): Sequential(
+          (0): Linear(in_features=32, out_features=2, bias=False)
+          (1): ReLU(inplace=True)
+          (2): Linear(in_features=2, out_features=32, bias=False)
+          (3): Sigmoid()
+        )
+      )
+      (attention): AttentionBlock(
+        (query): Conv2d(32, 4, kernel_size=(1, 1), stride=(1, 1))
+        (key): Conv2d(32, 4, kernel_size=(1, 1), stride=(1, 1))
+        (value): Conv2d(32, 32, kernel_size=(1, 1), stride=(1, 1))
+      )
+      (dropout): Dropout2d(p=0.2, inplace=False)
+    )
+  )
+  (layer2): Sequential(
+    (0): ResidualBlock(
+      (conv1): Conv2d(32, 64, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential(
+        (0): Conv2d(32, 64, kernel_size=(1, 1), stride=(2, 2), bias=False)
+        (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+      (se): SEBlock(
+        (squeeze): AdaptiveAvgPool2d(output_size=1)
+        (excitation): Sequential(
+          (0): Linear(in_features=64, out_features=4, bias=False)
+          (1): ReLU(inplace=True)
+          (2): Linear(in_features=4, out_features=64, bias=False)
+          (3): Sigmoid()
+        )
+      )
+      (attention): AttentionBlock(
+        (query): Conv2d(64, 8, kernel_size=(1, 1), stride=(1, 1))
+        (key): Conv2d(64, 8, kernel_size=(1, 1), stride=(1, 1))
+        (value): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+      )
+      (dropout): Dropout2d(p=0.2, inplace=False)
+    )
+    (1): ResidualBlock(
+      (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential()
+      (se): SEBlock(
+        (squeeze): AdaptiveAvgPool2d(output_size=1)
+        (excitation): Sequential(
+          (0): Linear(in_features=64, out_features=4, bias=False)
+          (1): ReLU(inplace=True)
+          (2): Linear(in_features=4, out_features=64, bias=False)
+          (3): Sigmoid()
+        )
+      )
+      (attention): AttentionBlock(
+        (query): Conv2d(64, 8, kernel_size=(1, 1), stride=(1, 1))
+        (key): Conv2d(64, 8, kernel_size=(1, 1), stride=(1, 1))
+        (value): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+      )
+      (dropout): Dropout2d(p=0.2, inplace=False)
+    )
+  )
+  (layer3): Sequential(
+    (0): ResidualBlock(
+      (conv1): Conv2d(64, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential(
+        (0): Conv2d(64, 128, kernel_size=(1, 1), stride=(2, 2), bias=False)
+        (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+      (se): SEBlock(
+        (squeeze): AdaptiveAvgPool2d(output_size=1)
+        (excitation): Sequential(
+          (0): Linear(in_features=128, out_features=8, bias=False)
+          (1): ReLU(inplace=True)
+          (2): Linear(in_features=8, out_features=128, bias=False)
+          (3): Sigmoid()
+        )
+      )
+      (attention): AttentionBlock(
+        (query): Conv2d(128, 16, kernel_size=(1, 1), stride=(1, 1))
+        (key): Conv2d(128, 16, kernel_size=(1, 1), stride=(1, 1))
+        (value): Conv2d(128, 128, kernel_size=(1, 1), stride=(1, 1))
+      )
+      (dropout): Dropout2d(p=0.2, inplace=False)
+    )
+    (1): ResidualBlock(
+      (conv1): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential()
+      (se): SEBlock(
+        (squeeze): AdaptiveAvgPool2d(output_size=1)
+        (excitation): Sequential(
+          (0): Linear(in_features=128, out_features=8, bias=False)
+          (1): ReLU(inplace=True)
+          (2): Linear(in_features=8, out_features=128, bias=False)
+          (3): Sigmoid()
+        )
+      )
+      (attention): AttentionBlock(
+        (query): Conv2d(128, 16, kernel_size=(1, 1), stride=(1, 1))
+        (key): Conv2d(128, 16, kernel_size=(1, 1), stride=(1, 1))
+        (value): Conv2d(128, 128, kernel_size=(1, 1), stride=(1, 1))
+      )
+      (dropout): Dropout2d(p=0.2, inplace=False)
+    )
+  )
+  (fpn1): FPNBlock(
+    (conv1): Conv2d(128, 64, kernel_size=(1, 1), stride=(1, 1))
+    (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (upsample): Upsample(scale_factor=2.0, mode='bilinear')
+  )
+  (fpn2): FPNBlock(
+    (conv1): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1))
+    (conv2): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (upsample): Upsample(scale_factor=2.0, mode='bilinear')
+  )
+  (classifier): Sequential(
+    (0): AdaptiveAvgPool2d(output_size=1)
+    (1): Flatten(start_dim=1, end_dim=-1)
+    (2): Linear(in_features=32, out_features=512, bias=True)
+    (3): BatchNorm1d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (4): ReLU(inplace=True)
+    (5): Dropout(p=0.3, inplace=False)
+    (6): Linear(in_features=512, out_features=10, bias=True)
+  )
+)
+2025-05-22 18:40:18,941 - INFO - Epoch [1/100] (110.12s)
+2025-05-22 18:40:18,941 - INFO - Train Loss: 2.3749, Train Acc: 13.56%
+2025-05-22 18:40:18,942 - INFO - Val Loss: 2.5548, Val Acc: 7.91%
+2025-05-22 18:40:48,634 - INFO - Epoch [2/100] (29.69s)
+2025-05-22 18:40:48,634 - INFO - Train Loss: 2.3371, Train Acc: 14.83%
+2025-05-22 18:40:48,634 - INFO - Val Loss: 2.4499, Val Acc: 12.99%
+2025-05-22 18:41:18,104 - INFO - Epoch [3/100] (29.47s)
+2025-05-22 18:41:18,104 - INFO - Train Loss: 2.2708, Train Acc: 16.38%
+2025-05-22 18:41:18,104 - INFO - Val Loss: 2.3103, Val Acc: 14.12%
+2025-05-22 18:41:47,101 - INFO - Epoch [4/100] (29.00s)
+2025-05-22 18:41:47,101 - INFO - Train Loss: 2.2463, Train Acc: 16.53%
+2025-05-22 18:41:47,101 - INFO - Val Loss: 2.1516, Val Acc: 22.60%
+2025-05-22 18:43:10,174 - INFO - Epoch [5/100] (83.07s)
+2025-05-22 18:43:10,175 - INFO - Train Loss: 2.1238, Train Acc: 19.92%
+2025-05-22 18:43:10,175 - INFO - Val Loss: 2.0057, Val Acc: 24.29%
+2025-05-22 18:44:03,980 - INFO - Epoch [6/100] (53.80s)
+2025-05-22 18:44:03,980 - INFO - Train Loss: 2.0193, Train Acc: 22.88%
+2025-05-22 18:44:03,980 - INFO - Val Loss: 1.8961, Val Acc: 27.12%
+2025-05-22 18:44:34,470 - INFO - Epoch [7/100] (30.49s)
+2025-05-22 18:44:34,470 - INFO - Train Loss: 1.8794, Train Acc: 30.08%
+2025-05-22 18:44:34,471 - INFO - Val Loss: 1.8769, Val Acc: 36.16%
+2025-05-22 18:45:07,530 - INFO - Epoch [8/100] (33.06s)
+2025-05-22 18:45:07,531 - INFO - Train Loss: 1.7589, Train Acc: 34.60%
+2025-05-22 18:45:07,531 - INFO - Val Loss: 1.5879, Val Acc: 46.33%
+2025-05-22 18:45:59,215 - INFO - Epoch [9/100] (51.68s)
+2025-05-22 18:45:59,215 - INFO - Train Loss: 1.6807, Train Acc: 40.40%
+2025-05-22 18:45:59,215 - INFO - Val Loss: 1.4790, Val Acc: 47.46%
+2025-05-22 18:46:27,524 - INFO - Epoch [10/100] (28.31s)
+2025-05-22 18:46:27,524 - INFO - Train Loss: 1.5765, Train Acc: 46.61%
+2025-05-22 18:46:27,524 - INFO - Val Loss: 1.4511, Val Acc: 48.59%
+2025-05-22 18:46:57,408 - INFO - Epoch [11/100] (29.88s)
+2025-05-22 18:46:57,408 - INFO - Train Loss: 1.5315, Train Acc: 42.80%
+2025-05-22 18:46:57,408 - INFO - Val Loss: 2.0642, Val Acc: 24.86%
+2025-05-22 18:48:29,610 - INFO - Epoch [12/100] (92.20s)
+2025-05-22 18:48:29,611 - INFO - Train Loss: 1.5517, Train Acc: 46.61%
+2025-05-22 18:48:29,611 - INFO - Val Loss: 1.2512, Val Acc: 60.45%
+2025-05-22 18:48:59,292 - INFO - Epoch [13/100] (29.68s)
+2025-05-22 18:48:59,292 - INFO - Train Loss: 1.2307, Train Acc: 60.03%
+2025-05-22 18:48:59,292 - INFO - Val Loss: 1.0353, Val Acc: 58.76%
+2025-05-22 18:49:30,996 - INFO - Epoch [14/100] (31.70s)
+2025-05-22 18:49:30,996 - INFO - Train Loss: 1.2409, Train Acc: 61.16%
+2025-05-22 18:49:30,996 - INFO - Val Loss: 0.9377, Val Acc: 63.84%
+2025-05-22 18:49:59,651 - INFO - Epoch [15/100] (28.65s)
+2025-05-22 18:49:59,651 - INFO - Train Loss: 1.0427, Train Acc: 64.41%
+2025-05-22 18:49:59,651 - INFO - Val Loss: 1.0681, Val Acc: 60.45%
+2025-05-22 18:50:29,175 - INFO - Epoch [16/100] (29.52s)
+2025-05-22 18:50:29,175 - INFO - Train Loss: 0.8887, Train Acc: 70.76%
+2025-05-22 18:50:29,176 - INFO - Val Loss: 0.6659, Val Acc: 76.27%
+2025-05-22 18:50:58,642 - INFO - Epoch [17/100] (29.47s)
+2025-05-22 18:50:58,643 - INFO - Train Loss: 0.8526, Train Acc: 71.61%
+2025-05-22 18:50:58,643 - INFO - Val Loss: 0.6881, Val Acc: 79.10%
+2025-05-22 18:51:28,368 - INFO - Epoch [18/100] (29.73s)
+2025-05-22 18:51:28,369 - INFO - Train Loss: 0.6916, Train Acc: 76.98%
+2025-05-22 18:51:28,369 - INFO - Val Loss: 0.6582, Val Acc: 76.84%
+2025-05-22 18:51:58,699 - INFO - Epoch [19/100] (30.33s)
+2025-05-22 18:51:58,699 - INFO - Train Loss: 0.6390, Train Acc: 79.24%
+2025-05-22 18:51:58,699 - INFO - Val Loss: 0.5288, Val Acc: 85.31%
+2025-05-22 18:52:29,339 - INFO - Epoch [20/100] (30.64s)
+2025-05-22 18:52:29,339 - INFO - Train Loss: 0.6667, Train Acc: 79.38%
+2025-05-22 18:52:29,340 - INFO - Val Loss: 0.5117, Val Acc: 85.31%
+2025-05-22 20:46:16,898 - INFO - Input tensor shape: torch.Size([885, 1, 32, 32])
+2025-05-22 20:46:17,033 - INFO - Model architecture:
+AdvancedCreditCardNet(
+  (conv1): Sequential(
+    (0): Conv2d(1, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): ReLU(inplace=True)
+  )
+  (layer1): Sequential(
+    (0): ResidualBlock(
+      (conv1): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential()
+      (se): SEBlock(
+        (squeeze): AdaptiveAvgPool2d(output_size=1)
+        (excitation): Sequential(
+          (0): Linear(in_features=32, out_features=2, bias=False)
+          (1): ReLU(inplace=True)
+          (2): Linear(in_features=2, out_features=32, bias=False)
+          (3): Sigmoid()
+        )
+      )
+      (attention): AttentionBlock(
+        (query): Conv2d(32, 4, kernel_size=(1, 1), stride=(1, 1))
+        (key): Conv2d(32, 4, kernel_size=(1, 1), stride=(1, 1))
+        (value): Conv2d(32, 32, kernel_size=(1, 1), stride=(1, 1))
+      )
+      (dropout): Dropout2d(p=0.2, inplace=False)
+    )
+    (1): ResidualBlock(
+      (conv1): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential()
+      (se): SEBlock(
+        (squeeze): AdaptiveAvgPool2d(output_size=1)
+        (excitation): Sequential(
+          (0): Linear(in_features=32, out_features=2, bias=False)
+          (1): ReLU(inplace=True)
+          (2): Linear(in_features=2, out_features=32, bias=False)
+          (3): Sigmoid()
+        )
+      )
+      (attention): AttentionBlock(
+        (query): Conv2d(32, 4, kernel_size=(1, 1), stride=(1, 1))
+        (key): Conv2d(32, 4, kernel_size=(1, 1), stride=(1, 1))
+        (value): Conv2d(32, 32, kernel_size=(1, 1), stride=(1, 1))
+      )
+      (dropout): Dropout2d(p=0.2, inplace=False)
+    )
+  )
+  (layer2): Sequential(
+    (0): ResidualBlock(
+      (conv1): Conv2d(32, 64, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential(
+        (0): Conv2d(32, 64, kernel_size=(1, 1), stride=(2, 2), bias=False)
+        (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+      (se): SEBlock(
+        (squeeze): AdaptiveAvgPool2d(output_size=1)
+        (excitation): Sequential(
+          (0): Linear(in_features=64, out_features=4, bias=False)
+          (1): ReLU(inplace=True)
+          (2): Linear(in_features=4, out_features=64, bias=False)
+          (3): Sigmoid()
+        )
+      )
+      (attention): AttentionBlock(
+        (query): Conv2d(64, 8, kernel_size=(1, 1), stride=(1, 1))
+        (key): Conv2d(64, 8, kernel_size=(1, 1), stride=(1, 1))
+        (value): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+      )
+      (dropout): Dropout2d(p=0.2, inplace=False)
+    )
+    (1): ResidualBlock(
+      (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential()
+      (se): SEBlock(
+        (squeeze): AdaptiveAvgPool2d(output_size=1)
+        (excitation): Sequential(
+          (0): Linear(in_features=64, out_features=4, bias=False)
+          (1): ReLU(inplace=True)
+          (2): Linear(in_features=4, out_features=64, bias=False)
+          (3): Sigmoid()
+        )
+      )
+      (attention): AttentionBlock(
+        (query): Conv2d(64, 8, kernel_size=(1, 1), stride=(1, 1))
+        (key): Conv2d(64, 8, kernel_size=(1, 1), stride=(1, 1))
+        (value): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+      )
+      (dropout): Dropout2d(p=0.2, inplace=False)
+    )
+  )
+  (layer3): Sequential(
+    (0): ResidualBlock(
+      (conv1): Conv2d(64, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential(
+        (0): Conv2d(64, 128, kernel_size=(1, 1), stride=(2, 2), bias=False)
+        (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+      (se): SEBlock(
+        (squeeze): AdaptiveAvgPool2d(output_size=1)
+        (excitation): Sequential(
+          (0): Linear(in_features=128, out_features=8, bias=False)
+          (1): ReLU(inplace=True)
+          (2): Linear(in_features=8, out_features=128, bias=False)
+          (3): Sigmoid()
+        )
+      )
+      (attention): AttentionBlock(
+        (query): Conv2d(128, 16, kernel_size=(1, 1), stride=(1, 1))
+        (key): Conv2d(128, 16, kernel_size=(1, 1), stride=(1, 1))
+        (value): Conv2d(128, 128, kernel_size=(1, 1), stride=(1, 1))
+      )
+      (dropout): Dropout2d(p=0.2, inplace=False)
+    )
+    (1): ResidualBlock(
+      (conv1): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential()
+      (se): SEBlock(
+        (squeeze): AdaptiveAvgPool2d(output_size=1)
+        (excitation): Sequential(
+          (0): Linear(in_features=128, out_features=8, bias=False)
+          (1): ReLU(inplace=True)
+          (2): Linear(in_features=8, out_features=128, bias=False)
+          (3): Sigmoid()
+        )
+      )
+      (attention): AttentionBlock(
+        (query): Conv2d(128, 16, kernel_size=(1, 1), stride=(1, 1))
+        (key): Conv2d(128, 16, kernel_size=(1, 1), stride=(1, 1))
+        (value): Conv2d(128, 128, kernel_size=(1, 1), stride=(1, 1))
+      )
+      (dropout): Dropout2d(p=0.2, inplace=False)
+    )
+  )
+  (fpn1): FPNBlock(
+    (conv1): Conv2d(128, 64, kernel_size=(1, 1), stride=(1, 1))
+    (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (upsample): Upsample(scale_factor=2.0, mode='bilinear')
+  )
+  (fpn2): FPNBlock(
+    (conv1): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1))
+    (conv2): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (upsample): Upsample(scale_factor=2.0, mode='bilinear')
+  )
+  (classifier): Sequential(
+    (0): AdaptiveAvgPool2d(output_size=1)
+    (1): Flatten(start_dim=1, end_dim=-1)
+    (2): Linear(in_features=32, out_features=512, bias=True)
+    (3): BatchNorm1d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (4): ReLU(inplace=True)
+    (5): Dropout(p=0.3, inplace=False)
+    (6): Linear(in_features=512, out_features=10, bias=True)
+  )
+)
+2025-05-22 20:46:47,388 - INFO - Epoch [1/100] (30.35s)
+2025-05-22 20:46:47,388 - INFO - Train Loss: 2.3566, Train Acc: 12.43%
+2025-05-22 20:46:47,389 - INFO - Val Loss: 2.4538, Val Acc: 11.30%
+2025-05-22 20:47:17,515 - INFO - Epoch [2/100] (30.13s)
+2025-05-22 20:47:17,515 - INFO - Train Loss: 2.3248, Train Acc: 13.14%
+2025-05-22 20:47:17,515 - INFO - Val Loss: 2.6253, Val Acc: 8.47%
+2025-05-22 20:47:48,073 - INFO - Epoch [3/100] (30.56s)
+2025-05-22 20:47:48,073 - INFO - Train Loss: 2.2892, Train Acc: 14.69%
+2025-05-22 20:47:48,074 - INFO - Val Loss: 2.4585, Val Acc: 15.25%
+2025-05-22 20:48:22,325 - INFO - Epoch [4/100] (34.25s)
+2025-05-22 20:48:22,326 - INFO - Train Loss: 2.2232, Train Acc: 16.53%
+2025-05-22 20:48:22,326 - INFO - Val Loss: 2.1874, Val Acc: 19.77%
+2025-05-22 20:48:56,039 - INFO - Epoch [5/100] (33.71s)
+2025-05-22 20:48:56,040 - INFO - Train Loss: 2.1290, Train Acc: 21.89%
+2025-05-22 20:48:56,040 - INFO - Val Loss: 2.1524, Val Acc: 16.38%
+2025-05-22 20:49:35,327 - INFO - Epoch [6/100] (39.29s)
+2025-05-22 20:49:35,328 - INFO - Train Loss: 2.0031, Train Acc: 23.59%
+2025-05-22 20:49:35,328 - INFO - Val Loss: 2.1271, Val Acc: 15.25%
+2025-05-22 20:50:16,287 - INFO - Epoch [7/100] (40.96s)
+2025-05-22 20:50:16,288 - INFO - Train Loss: 1.9255, Train Acc: 29.10%
+2025-05-22 20:50:16,289 - INFO - Val Loss: 1.8015, Val Acc: 20.34%
+2025-05-22 20:50:57,163 - INFO - Epoch [8/100] (40.87s)
+2025-05-22 20:50:57,163 - INFO - Train Loss: 1.7597, Train Acc: 32.06%
+2025-05-22 20:50:57,163 - INFO - Val Loss: 1.6004, Val Acc: 37.85%
+2025-05-22 20:51:30,083 - INFO - Epoch [9/100] (32.92s)
+2025-05-22 20:51:30,083 - INFO - Train Loss: 1.6714, Train Acc: 37.71%
+2025-05-22 20:51:30,084 - INFO - Val Loss: 1.4876, Val Acc: 44.63%
+2025-05-22 20:52:02,529 - INFO - Epoch [10/100] (32.45s)
+2025-05-22 20:52:02,530 - INFO - Train Loss: 1.6748, Train Acc: 39.97%
+2025-05-22 20:52:02,530 - INFO - Val Loss: 1.4433, Val Acc: 44.07%
+2025-05-22 20:52:35,560 - INFO - Epoch [11/100] (33.03s)
+2025-05-22 20:52:35,560 - INFO - Train Loss: 1.5751, Train Acc: 44.21%
+2025-05-22 20:52:35,561 - INFO - Val Loss: 1.6001, Val Acc: 39.55%
+2025-05-22 20:53:06,323 - INFO - Epoch [12/100] (30.76s)
+2025-05-22 20:53:06,324 - INFO - Train Loss: 1.3070, Train Acc: 52.40%
+2025-05-22 20:53:06,324 - INFO - Val Loss: 1.1353, Val Acc: 55.37%
+2025-05-22 20:53:37,624 - INFO - Epoch [13/100] (31.30s)
+2025-05-22 20:53:37,624 - INFO - Train Loss: 1.2219, Train Acc: 59.46%
+2025-05-22 20:53:37,625 - INFO - Val Loss: 1.2166, Val Acc: 46.89%
+2025-05-22 20:54:09,460 - INFO - Epoch [14/100] (31.83s)
+2025-05-22 20:54:09,460 - INFO - Train Loss: 1.0836, Train Acc: 60.88%
+2025-05-22 20:54:09,460 - INFO - Val Loss: 1.1554, Val Acc: 57.06%
+2025-05-22 20:54:41,498 - INFO - Epoch [15/100] (32.04s)
+2025-05-22 20:54:41,498 - INFO - Train Loss: 1.0026, Train Acc: 65.11%
+2025-05-22 20:54:41,498 - INFO - Val Loss: 1.0046, Val Acc: 58.19%
+2025-05-22 20:55:14,685 - INFO - Epoch [16/100] (33.19s)
+2025-05-22 20:55:14,686 - INFO - Train Loss: 0.9912, Train Acc: 66.38%
+2025-05-22 20:55:14,686 - INFO - Val Loss: 1.0037, Val Acc: 59.89%
+2025-05-22 20:55:54,621 - INFO - Epoch [17/100] (39.93s)
+2025-05-22 20:55:54,621 - INFO - Train Loss: 0.9109, Train Acc: 66.81%
+2025-05-22 20:55:54,622 - INFO - Val Loss: 0.8663, Val Acc: 64.97%
+2025-05-22 20:56:32,445 - INFO - Epoch [18/100] (37.82s)
+2025-05-22 20:56:32,446 - INFO - Train Loss: 0.8426, Train Acc: 71.47%
+2025-05-22 20:56:32,446 - INFO - Val Loss: 0.7645, Val Acc: 73.45%
+2025-05-22 20:57:06,743 - INFO - Epoch [19/100] (34.30s)
+2025-05-22 20:57:06,743 - INFO - Train Loss: 0.6834, Train Acc: 78.53%
+2025-05-22 20:57:06,744 - INFO - Val Loss: 0.8785, Val Acc: 62.71%
+2025-05-22 20:57:41,177 - INFO - Epoch [20/100] (34.43s)
+2025-05-22 20:57:41,177 - INFO - Train Loss: 0.7004, Train Acc: 78.25%
+2025-05-22 20:57:41,177 - INFO - Val Loss: 0.5121, Val Acc: 80.79%
+2025-05-22 20:58:15,158 - INFO - Epoch [21/100] (33.98s)
+2025-05-22 20:58:15,158 - INFO - Train Loss: 0.6584, Train Acc: 79.10%
+2025-05-22 20:58:15,159 - INFO - Val Loss: 0.6033, Val Acc: 79.66%
+2025-05-22 20:58:55,095 - INFO - Epoch [22/100] (39.94s)
+2025-05-22 20:58:55,096 - INFO - Train Loss: 0.6029, Train Acc: 82.49%
+2025-05-22 20:58:55,096 - INFO - Val Loss: 0.4058, Val Acc: 88.14%
+2025-05-22 21:00:57,216 - INFO - Epoch [23/100] (122.12s)
+2025-05-22 21:00:57,217 - INFO - Train Loss: 0.4861, Train Acc: 84.75%
+2025-05-22 21:00:57,217 - INFO - Val Loss: 0.4008, Val Acc: 88.70%
+2025-05-22 21:01:40,407 - INFO - Epoch [24/100] (43.19s)
+2025-05-22 21:01:40,407 - INFO - Train Loss: 0.4876, Train Acc: 86.86%
+2025-05-22 21:01:40,407 - INFO - Val Loss: 0.3733, Val Acc: 88.70%
+2025-05-22 21:02:23,164 - INFO - Epoch [25/100] (42.76s)
+2025-05-22 21:02:23,164 - INFO - Train Loss: 0.3972, Train Acc: 88.42%
+2025-05-22 21:02:23,164 - INFO - Val Loss: 0.3199, Val Acc: 90.40%
+2025-05-22 21:03:06,167 - INFO - Epoch [26/100] (43.00s)
+2025-05-22 21:03:06,167 - INFO - Train Loss: 0.3978, Train Acc: 89.69%
+2025-05-22 21:03:06,167 - INFO - Val Loss: 0.3150, Val Acc: 87.01%
+2025-05-22 21:03:48,197 - INFO - Epoch [27/100] (42.03s)
+2025-05-22 21:03:48,198 - INFO - Train Loss: 0.4216, Train Acc: 87.99%
+2025-05-22 21:03:48,198 - INFO - Val Loss: 0.3218, Val Acc: 88.14%
+2025-05-22 21:04:29,892 - INFO - Epoch [28/100] (41.69s)
+2025-05-22 21:04:29,893 - INFO - Train Loss: 0.3528, Train Acc: 90.25%
+2025-05-22 21:04:29,893 - INFO - Val Loss: 0.3157, Val Acc: 89.83%
+2025-05-22 21:05:12,457 - INFO - Epoch [29/100] (42.56s)
+2025-05-22 21:05:12,457 - INFO - Train Loss: 0.3530, Train Acc: 89.27%
+2025-05-22 21:05:12,457 - INFO - Val Loss: 0.2994, Val Acc: 89.83%
+2025-05-22 21:05:55,368 - INFO - Epoch [30/100] (42.91s)
+2025-05-22 21:05:55,368 - INFO - Train Loss: 0.3916, Train Acc: 89.55%
+2025-05-22 21:05:55,368 - INFO - Val Loss: 0.3108, Val Acc: 89.83%
+2025-05-22 21:06:40,731 - INFO - Epoch [31/100] (45.36s)
+2025-05-22 21:06:40,732 - INFO - Train Loss: 0.4465, Train Acc: 87.71%
+2025-05-22 21:06:40,732 - INFO - Val Loss: 0.4325, Val Acc: 88.70%
+2025-05-22 21:07:23,732 - INFO - Epoch [32/100] (43.00s)
+2025-05-22 21:07:23,732 - INFO - Train Loss: 0.4190, Train Acc: 86.30%
+2025-05-22 21:07:23,732 - INFO - Val Loss: 0.6350, Val Acc: 79.66%
+2025-05-22 21:08:06,723 - INFO - Epoch [33/100] (42.99s)
+2025-05-22 21:08:06,723 - INFO - Train Loss: 0.4457, Train Acc: 87.01%
+2025-05-22 21:08:06,724 - INFO - Val Loss: 0.5224, Val Acc: 83.62%
+2025-05-22 21:08:48,809 - INFO - Epoch [34/100] (42.08s)
+2025-05-22 21:08:48,809 - INFO - Train Loss: 0.5764, Train Acc: 81.50%
+2025-05-22 21:08:48,809 - INFO - Val Loss: 0.4754, Val Acc: 86.44%
+2025-05-22 21:09:30,157 - INFO - Epoch [35/100] (41.35s)
+2025-05-22 21:09:30,157 - INFO - Train Loss: 0.4686, Train Acc: 86.86%
+2025-05-22 21:09:30,157 - INFO - Val Loss: 0.4157, Val Acc: 90.96%
+2025-05-22 21:10:14,177 - INFO - Epoch [36/100] (44.02s)
+2025-05-22 21:10:14,177 - INFO - Train Loss: 0.3933, Train Acc: 87.57%
+2025-05-22 21:10:14,177 - INFO - Val Loss: 0.3616, Val Acc: 87.01%
+2025-05-22 21:10:57,789 - INFO - Epoch [37/100] (43.61s)
+2025-05-22 21:10:57,789 - INFO - Train Loss: 0.3581, Train Acc: 88.42%
+2025-05-22 21:10:57,789 - INFO - Val Loss: 0.4426, Val Acc: 84.18%
+2025-05-22 21:11:40,328 - INFO - Epoch [38/100] (42.54s)
+2025-05-22 21:11:40,328 - INFO - Train Loss: 0.4314, Train Acc: 86.58%
+2025-05-22 21:11:40,329 - INFO - Val Loss: 0.3933, Val Acc: 89.27%
+2025-05-22 21:12:26,475 - INFO - Epoch [39/100] (46.15s)
+2025-05-22 21:12:26,475 - INFO - Train Loss: 0.3544, Train Acc: 88.28%
+2025-05-22 21:12:26,476 - INFO - Val Loss: 0.2803, Val Acc: 90.40%
+2025-05-22 21:13:12,820 - INFO - Epoch [40/100] (46.34s)
+2025-05-22 21:13:12,820 - INFO - Train Loss: 0.2922, Train Acc: 91.53%
+2025-05-22 21:13:12,820 - INFO - Val Loss: 0.3380, Val Acc: 87.57%
+2025-05-22 21:13:56,608 - INFO - Epoch [41/100] (43.79s)
+2025-05-22 21:13:56,608 - INFO - Train Loss: 0.3938, Train Acc: 88.14%
+2025-05-22 21:13:56,608 - INFO - Val Loss: 0.2743, Val Acc: 90.40%
+2025-05-22 21:14:43,377 - INFO - Epoch [42/100] (46.77s)
+2025-05-22 21:14:43,377 - INFO - Train Loss: 0.3320, Train Acc: 90.40%
+2025-05-22 21:14:43,377 - INFO - Val Loss: 0.3426, Val Acc: 90.40%
+2025-05-22 21:15:26,984 - INFO - Epoch [43/100] (43.61s)
+2025-05-22 21:15:26,984 - INFO - Train Loss: 0.2861, Train Acc: 92.23%
+2025-05-22 21:15:26,984 - INFO - Val Loss: 0.1693, Val Acc: 94.92%
+2025-05-22 21:16:10,749 - INFO - Epoch [44/100] (43.76s)
+2025-05-22 21:16:10,749 - INFO - Train Loss: 0.3061, Train Acc: 91.10%
+2025-05-22 21:16:10,749 - INFO - Val Loss: 0.2715, Val Acc: 92.09%
+2025-05-22 21:16:57,260 - INFO - Epoch [45/100] (46.51s)
+2025-05-22 21:16:57,261 - INFO - Train Loss: 0.2444, Train Acc: 92.66%
+2025-05-22 21:16:57,261 - INFO - Val Loss: 0.1933, Val Acc: 92.09%
+2025-05-22 21:17:42,861 - INFO - Epoch [46/100] (45.60s)
+2025-05-22 21:17:42,861 - INFO - Train Loss: 0.2282, Train Acc: 92.51%
+2025-05-22 21:17:42,862 - INFO - Val Loss: 0.1900, Val Acc: 93.79%
+2025-05-22 21:18:27,085 - INFO - Epoch [47/100] (44.22s)
+2025-05-22 21:18:27,085 - INFO - Train Loss: 0.2092, Train Acc: 94.92%
+2025-05-22 21:18:27,085 - INFO - Val Loss: 0.1979, Val Acc: 94.35%
+2025-05-22 21:19:10,547 - INFO - Epoch [48/100] (43.46s)
+2025-05-22 21:19:10,548 - INFO - Train Loss: 0.2632, Train Acc: 92.23%
+2025-05-22 21:19:10,548 - INFO - Val Loss: 0.2153, Val Acc: 93.79%
+2025-05-22 21:19:57,902 - INFO - Epoch [49/100] (47.35s)
+2025-05-22 21:19:57,903 - INFO - Train Loss: 0.1664, Train Acc: 94.49%
+2025-05-22 21:19:57,903 - INFO - Val Loss: 0.2077, Val Acc: 93.22%
+2025-05-22 21:20:43,091 - INFO - Epoch [50/100] (45.19s)
+2025-05-22 21:20:43,092 - INFO - Train Loss: 0.1682, Train Acc: 95.06%
+2025-05-22 21:20:43,092 - INFO - Val Loss: 0.2625, Val Acc: 92.66%
+2025-05-22 21:21:28,727 - INFO - Epoch [51/100] (45.63s)
+2025-05-22 21:21:28,727 - INFO - Train Loss: 0.1870, Train Acc: 94.49%
+2025-05-22 21:21:28,727 - INFO - Val Loss: 0.1699, Val Acc: 95.48%
+2025-05-22 21:22:15,111 - INFO - Epoch [52/100] (46.38s)
+2025-05-22 21:22:15,112 - INFO - Train Loss: 0.2082, Train Acc: 94.21%
+2025-05-22 21:22:15,112 - INFO - Val Loss: 0.1815, Val Acc: 95.48%
+2025-05-22 21:23:01,159 - INFO - Epoch [53/100] (46.05s)
+2025-05-22 21:23:01,160 - INFO - Train Loss: 0.2108, Train Acc: 95.48%
+2025-05-22 21:23:01,160 - INFO - Val Loss: 0.1426, Val Acc: 96.05%
+2025-05-22 21:23:47,591 - INFO - Epoch [54/100] (46.43s)
+2025-05-22 21:23:47,591 - INFO - Train Loss: 0.2272, Train Acc: 94.63%
+2025-05-22 21:23:47,592 - INFO - Val Loss: 0.1451, Val Acc: 95.48%
+2025-05-22 21:24:32,160 - INFO - Epoch [55/100] (44.57s)
+2025-05-22 21:24:32,160 - INFO - Train Loss: 0.2341, Train Acc: 95.20%
+2025-05-22 21:24:32,160 - INFO - Val Loss: 0.1612, Val Acc: 96.05%
+2025-05-22 21:25:17,604 - INFO - Epoch [56/100] (45.44s)
+2025-05-22 21:25:17,605 - INFO - Train Loss: 0.1178, Train Acc: 96.19%
+2025-05-22 21:25:17,605 - INFO - Val Loss: 0.1847, Val Acc: 94.35%
+2025-05-22 21:26:03,758 - INFO - Epoch [57/100] (46.15s)
+2025-05-22 21:26:03,758 - INFO - Train Loss: 0.1317, Train Acc: 96.33%
+2025-05-22 21:26:03,758 - INFO - Val Loss: 0.2284, Val Acc: 93.22%
+2025-05-22 21:26:50,072 - INFO - Epoch [58/100] (46.31s)
+2025-05-22 21:26:50,072 - INFO - Train Loss: 0.1443, Train Acc: 96.61%
+2025-05-22 21:26:50,072 - INFO - Val Loss: 0.1499, Val Acc: 95.48%
+2025-05-22 21:27:36,312 - INFO - Epoch [59/100] (46.24s)
+2025-05-22 21:27:36,312 - INFO - Train Loss: 0.1067, Train Acc: 97.03%
+2025-05-22 21:27:36,312 - INFO - Val Loss: 0.1721, Val Acc: 93.79%
+2025-05-22 21:28:23,322 - INFO - Epoch [60/100] (47.01s)
+2025-05-22 21:28:23,322 - INFO - Train Loss: 0.1706, Train Acc: 97.03%
+2025-05-22 21:28:23,322 - INFO - Val Loss: 0.1641, Val Acc: 93.79%
+2025-05-22 21:29:08,912 - INFO - Epoch [61/100] (45.59s)
+2025-05-22 21:29:08,913 - INFO - Train Loss: 0.1875, Train Acc: 96.89%
+2025-05-22 21:29:08,913 - INFO - Val Loss: 0.1560, Val Acc: 93.79%
+2025-05-22 21:29:56,635 - INFO - Epoch [62/100] (47.72s)
+2025-05-22 21:29:56,635 - INFO - Train Loss: 0.1055, Train Acc: 96.75%
+2025-05-22 21:29:56,636 - INFO - Val Loss: 0.1451, Val Acc: 94.92%
+2025-05-22 21:30:41,195 - INFO - Epoch [63/100] (44.56s)
+2025-05-22 21:30:41,195 - INFO - Train Loss: 0.1453, Train Acc: 96.05%
+2025-05-22 21:30:41,195 - INFO - Val Loss: 0.1362, Val Acc: 94.92%
+2025-05-22 21:31:26,101 - INFO - Epoch [64/100] (44.91s)
+2025-05-22 21:31:26,102 - INFO - Train Loss: 0.0760, Train Acc: 97.88%
+2025-05-22 21:31:26,102 - INFO - Val Loss: 0.1441, Val Acc: 94.92%
+2025-05-22 21:32:12,770 - INFO - Epoch [65/100] (46.67s)
+2025-05-22 21:32:12,770 - INFO - Train Loss: 0.0878, Train Acc: 96.89%
+2025-05-22 21:32:12,771 - INFO - Val Loss: 0.1307, Val Acc: 96.61%
+2025-05-22 21:33:00,183 - INFO - Epoch [66/100] (47.41s)
+2025-05-22 21:33:00,183 - INFO - Train Loss: 0.0638, Train Acc: 98.45%
+2025-05-22 21:33:00,183 - INFO - Val Loss: 0.1236, Val Acc: 97.18%
+2025-05-22 21:33:46,220 - INFO - Epoch [67/100] (46.04s)
+2025-05-22 21:33:46,221 - INFO - Train Loss: 0.0941, Train Acc: 97.88%
+2025-05-22 21:33:46,221 - INFO - Val Loss: 0.1243, Val Acc: 96.05%
+2025-05-22 21:34:30,859 - INFO - Epoch [68/100] (44.64s)
+2025-05-22 21:34:30,859 - INFO - Train Loss: 0.0750, Train Acc: 97.74%
+2025-05-22 21:34:30,859 - INFO - Val Loss: 0.1305, Val Acc: 96.05%
+2025-05-22 21:35:15,845 - INFO - Epoch [69/100] (44.99s)
+2025-05-22 21:35:15,845 - INFO - Train Loss: 0.0640, Train Acc: 98.02%
+2025-05-22 21:35:15,845 - INFO - Val Loss: 0.1234, Val Acc: 95.48%
+2025-05-22 21:36:00,390 - INFO - Epoch [70/100] (44.54s)
+2025-05-22 21:36:00,390 - INFO - Train Loss: 0.0892, Train Acc: 96.75%
+2025-05-22 21:36:00,390 - INFO - Val Loss: 0.1316, Val Acc: 96.61%
+2025-05-22 21:36:49,141 - INFO - Epoch [71/100] (48.75s)
+2025-05-22 21:36:49,141 - INFO - Train Loss: 0.2183, Train Acc: 95.62%
+2025-05-22 21:36:49,142 - INFO - Val Loss: 0.3047, Val Acc: 90.96%
+2025-05-22 21:37:35,220 - INFO - Epoch [72/100] (46.08s)
+2025-05-22 21:37:35,220 - INFO - Train Loss: 0.3016, Train Acc: 95.20%
+2025-05-22 21:37:35,220 - INFO - Val Loss: 0.1875, Val Acc: 94.35%
+2025-05-22 21:38:21,197 - INFO - Epoch [73/100] (45.98s)
+2025-05-22 21:38:21,197 - INFO - Train Loss: 0.2001, Train Acc: 94.21%
+2025-05-22 21:38:21,197 - INFO - Val Loss: 0.2941, Val Acc: 92.09%
+2025-05-22 21:39:07,399 - INFO - Epoch [74/100] (46.20s)
+2025-05-22 21:39:07,399 - INFO - Train Loss: 0.3477, Train Acc: 90.68%
+2025-05-22 21:39:07,400 - INFO - Val Loss: 0.3620, Val Acc: 92.09%
+2025-05-22 21:39:54,076 - INFO - Epoch [75/100] (46.68s)
+2025-05-22 21:39:54,076 - INFO - Train Loss: 0.2744, Train Acc: 91.53%
+2025-05-22 21:39:54,076 - INFO - Val Loss: 0.3217, Val Acc: 91.53%
+2025-05-22 21:40:40,807 - INFO - Epoch [76/100] (46.73s)
+2025-05-22 21:40:40,807 - INFO - Train Loss: 0.2723, Train Acc: 93.08%
+2025-05-22 21:40:40,807 - INFO - Val Loss: 0.2207, Val Acc: 94.92%
+2025-05-22 21:41:27,759 - INFO - Epoch [77/100] (46.95s)
+2025-05-22 21:41:27,759 - INFO - Train Loss: 0.3055, Train Acc: 90.82%
+2025-05-22 21:41:27,759 - INFO - Val Loss: 0.1751, Val Acc: 93.79%
+2025-05-22 21:42:14,427 - INFO - Epoch [78/100] (46.67s)
+2025-05-22 21:42:14,427 - INFO - Train Loss: 0.2723, Train Acc: 92.51%
+2025-05-22 21:42:14,427 - INFO - Val Loss: 0.1605, Val Acc: 95.48%
+2025-05-22 21:43:01,936 - INFO - Epoch [79/100] (47.51s)
+2025-05-22 21:43:01,936 - INFO - Train Loss: 0.1947, Train Acc: 93.64%
+2025-05-22 21:43:01,936 - INFO - Val Loss: 0.1323, Val Acc: 96.05%
+2025-05-22 21:43:49,587 - INFO - Epoch [80/100] (47.65s)
+2025-05-22 21:43:49,587 - INFO - Train Loss: 0.2110, Train Acc: 94.21%
+2025-05-22 21:43:49,587 - INFO - Val Loss: 0.2275, Val Acc: 94.35%
+2025-05-22 21:44:37,461 - INFO - Epoch [81/100] (47.87s)
+2025-05-22 21:44:37,461 - INFO - Train Loss: 0.2075, Train Acc: 93.50%
+2025-05-22 21:44:37,461 - INFO - Val Loss: 0.2946, Val Acc: 92.09%
+2025-05-22 21:45:24,880 - INFO - Epoch [82/100] (47.42s)
+2025-05-22 21:45:24,880 - INFO - Train Loss: 0.2536, Train Acc: 93.36%
+2025-05-22 21:45:24,881 - INFO - Val Loss: 0.2179, Val Acc: 95.48%
+2025-05-22 21:46:11,907 - INFO - Epoch [83/100] (47.03s)
+2025-05-22 21:46:11,908 - INFO - Train Loss: 0.2395, Train Acc: 94.49%
+2025-05-22 21:46:11,908 - INFO - Val Loss: 0.1772, Val Acc: 94.35%
+2025-05-22 21:46:59,390 - INFO - Epoch [84/100] (47.48s)
+2025-05-22 21:46:59,391 - INFO - Train Loss: 0.1686, Train Acc: 95.76%
+2025-05-22 21:46:59,391 - INFO - Val Loss: 0.1393, Val Acc: 94.92%
+2025-05-22 21:47:46,755 - INFO - Epoch [85/100] (47.36s)
+2025-05-22 21:47:46,756 - INFO - Train Loss: 0.1129, Train Acc: 95.90%
+2025-05-22 21:47:46,756 - INFO - Val Loss: 0.2788, Val Acc: 92.09%
+2025-05-22 21:48:33,253 - INFO - Epoch [86/100] (46.50s)
+2025-05-22 21:48:33,254 - INFO - Train Loss: 0.1169, Train Acc: 96.05%
+2025-05-22 21:48:33,254 - INFO - Val Loss: 0.1967, Val Acc: 92.09%
+2025-05-22 21:48:33,254 - INFO - Early stopping triggered after 86 epochs
+2025-05-22 21:48:33,443 - ERROR - Error in extract_card_number: name 'four_point_transform' is not defined
+2025-05-22 21:48:33,444 - INFO - Extracted card number: Error processing card: name 'four_point_transform' is not defined
