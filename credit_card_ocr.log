@@ -2749,3 +2749,83 @@ Processing image: test_photo.jpg
 2025-05-31 12:41:30,116 - WARNING - Found 29 digits instead of 16
 2025-05-31 12:41:30,956 - WARNING - Found 21 digits instead of 16
 2025-05-31 12:41:31,322 - INFO - Detected card number: 7777 7777 7777 7777
+2025-05-31 14:17:20,003 - INFO - Loading pre-trained model...
+2025-05-31 14:17:20,073 - INFO - Model loaded successfully
+2025-05-31 14:17:20,074 - INFO - 
+Processing image: test_gorsel.jpg
+2025-05-31 14:17:20,700 - WARNING - Found 42 digits instead of 16
+2025-05-31 14:17:21,867 - WARNING - Found 47 digits instead of 16
+2025-05-31 14:17:22,777 - INFO - Detected card number: 7777 7777 7777 7777
+2025-05-31 14:17:22,777 - INFO - 
+Processing image: test_image.jpg
+2025-05-31 14:17:23,340 - WARNING - Found 14 digits instead of 16
+2025-05-31 14:17:23,837 - INFO - Detected card number: 7777 7777 7777 77xx
+2025-05-31 14:17:23,837 - INFO - 
+Processing image: test_photo.jpg
+2025-05-31 14:17:24,393 - WARNING - Found 29 digits instead of 16
+2025-05-31 14:17:25,125 - WARNING - Found 21 digits instead of 16
+2025-05-31 14:17:25,499 - INFO - Detected card number: 7777 7777 7777 7777
+2025-05-31 14:19:17,238 - INFO - Loading pre-trained model...
+2025-05-31 14:19:17,320 - INFO - Model loaded successfully
+2025-05-31 14:19:17,321 - INFO - 
+Processing image: test_gorsel.jpg
+2025-05-31 14:19:18,015 - WARNING - Found 42 digits instead of 16
+2025-05-31 14:19:18,941 - WARNING - Found 47 digits instead of 16
+2025-05-31 14:19:19,739 - INFO - Detected card number: 7799 6677 7777 7777
+2025-05-31 14:19:19,740 - INFO - 
+Processing image: test_image.jpg
+2025-05-31 14:19:20,297 - WARNING - Found 14 digits instead of 16
+2025-05-31 14:19:20,788 - INFO - Detected card number: 7799 6677 7777 77xx
+2025-05-31 14:19:20,789 - INFO - 
+Processing image: test_photo.jpg
+2025-05-31 14:19:21,386 - WARNING - Found 29 digits instead of 16
+2025-05-31 14:19:22,087 - WARNING - Found 21 digits instead of 16
+2025-05-31 14:19:22,441 - INFO - Detected card number: 7799 6677 7777 7777
+2025-05-31 14:21:07,605 - INFO - Loading pre-trained model...
+2025-05-31 14:21:07,687 - INFO - Model loaded successfully
+2025-05-31 14:21:07,688 - INFO - 
+Processing image: test_gorsel.jpg
+2025-05-31 14:21:08,308 - WARNING - Found 42 digits instead of 16
+2025-05-31 14:21:09,208 - WARNING - Found 47 digits instead of 16
+2025-05-31 14:21:09,897 - INFO - Detected card number: 7799 6677 7777 7777
+2025-05-31 14:21:09,898 - INFO - 
+Processing image: test_image.jpg
+2025-05-31 14:21:10,503 - WARNING - Found 14 digits instead of 16
+2025-05-31 14:21:10,969 - INFO - Detected card number: 7799 6677 7777 77xx
+2025-05-31 14:21:10,969 - INFO - 
+Processing image: test_photo.jpg
+2025-05-31 14:21:11,562 - WARNING - Found 29 digits instead of 16
+2025-05-31 14:21:12,224 - WARNING - Found 21 digits instead of 16
+2025-05-31 14:21:12,519 - INFO - Detected card number: 7799 6677 7777 7777
+2025-05-31 14:21:43,552 - INFO - Loading pre-trained model...
+2025-05-31 14:21:43,636 - INFO - Model loaded successfully
+2025-05-31 14:21:43,637 - INFO - 
+Processing image: test_gorsel.jpg
+2025-05-31 14:21:44,276 - WARNING - Found 42 digits instead of 16
+2025-05-31 14:21:45,407 - WARNING - Found 47 digits instead of 16
+2025-05-31 14:21:46,290 - INFO - Detected card number: 7777 7777 7777 7777
+2025-05-31 14:21:46,291 - INFO - 
+Processing image: test_image.jpg
+2025-05-31 14:21:46,837 - WARNING - Found 14 digits instead of 16
+2025-05-31 14:21:47,348 - INFO - Detected card number: 7777 7777 7777 77xx
+2025-05-31 14:21:47,349 - INFO - 
+Processing image: test_photo.jpg
+2025-05-31 14:21:47,994 - WARNING - Found 29 digits instead of 16
+2025-05-31 14:21:48,799 - WARNING - Found 21 digits instead of 16
+2025-05-31 14:21:49,157 - INFO - Detected card number: 7777 7777 7777 7777
+2025-05-31 14:24:15,291 - INFO - Loading pre-trained model...
+2025-05-31 14:24:15,369 - INFO - Model loaded successfully
+2025-05-31 14:24:15,369 - INFO - 
+Processing image: test_gorsel.jpg
+2025-05-31 14:24:15,933 - WARNING - Found 42 digits instead of 16
+2025-05-31 14:24:16,482 - WARNING - Found 47 digits instead of 16
+2025-05-31 14:24:16,744 - INFO - Detected card number: 7777 7777 7777 7777
+2025-05-31 14:24:16,744 - INFO - 
+Processing image: test_image.jpg
+2025-05-31 14:24:17,263 - WARNING - Found 14 digits instead of 16
+2025-05-31 14:24:17,782 - INFO - Detected card number: 7777 7777 7777 77xx
+2025-05-31 14:24:17,782 - INFO - 
+Processing image: test_photo.jpg
+2025-05-31 14:24:18,308 - WARNING - Found 29 digits instead of 16
+2025-05-31 14:24:18,839 - WARNING - Found 21 digits instead of 16
+2025-05-31 14:24:19,105 - INFO - Detected card number: 7777 7777 7777 7777

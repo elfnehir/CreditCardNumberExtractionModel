@@ -755,7 +755,8 @@ def extract_card_number(image_path: str, model: nn.Module) -> str:
             digits = []
             total_confidence = 0
             
-            for idx, (_, contour) in enumerate(digit_contours):
+            # Only process the first 16 digits
+            for idx, (_, contour) in enumerate(digit_contours[:16]):
                 x, y, w, h = cv2.boundingRect(contour)
                 digit = warped[y:y+h, x:x+w]
                 
