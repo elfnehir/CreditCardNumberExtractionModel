@@ -1109,3 +1109,1643 @@ AdvancedCreditCardNet(
 2025-05-22 21:48:33,254 - INFO - Early stopping triggered after 86 epochs
 2025-05-22 21:48:33,443 - ERROR - Error in extract_card_number: name 'four_point_transform' is not defined
 2025-05-22 21:48:33,444 - INFO - Extracted card number: Error processing card: name 'four_point_transform' is not defined
+2025-05-30 11:50:53,892 - INFO - Starting model training...
+2025-05-30 11:51:02,742 - INFO - Input tensor shape: torch.Size([885, 1, 32, 32])
+2025-05-30 11:51:02,884 - INFO - Model architecture:
+AdvancedCreditCardNet(
+  (conv1): Sequential(
+    (0): Conv2d(1, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): ReLU(inplace=True)
+  )
+  (layer1): Sequential(
+    (0): ResidualBlock(
+      (conv1): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential()
+      (se): SEBlock(
+        (squeeze): AdaptiveAvgPool2d(output_size=1)
+        (excitation): Sequential(
+          (0): Linear(in_features=32, out_features=2, bias=False)
+          (1): ReLU(inplace=True)
+          (2): Linear(in_features=2, out_features=32, bias=False)
+          (3): Sigmoid()
+        )
+      )
+      (attention): AttentionBlock(
+        (query): Conv2d(32, 4, kernel_size=(1, 1), stride=(1, 1))
+        (key): Conv2d(32, 4, kernel_size=(1, 1), stride=(1, 1))
+        (value): Conv2d(32, 32, kernel_size=(1, 1), stride=(1, 1))
+      )
+      (dropout): Dropout2d(p=0.2, inplace=False)
+    )
+    (1): ResidualBlock(
+      (conv1): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential()
+      (se): SEBlock(
+        (squeeze): AdaptiveAvgPool2d(output_size=1)
+        (excitation): Sequential(
+          (0): Linear(in_features=32, out_features=2, bias=False)
+          (1): ReLU(inplace=True)
+          (2): Linear(in_features=2, out_features=32, bias=False)
+          (3): Sigmoid()
+        )
+      )
+      (attention): AttentionBlock(
+        (query): Conv2d(32, 4, kernel_size=(1, 1), stride=(1, 1))
+        (key): Conv2d(32, 4, kernel_size=(1, 1), stride=(1, 1))
+        (value): Conv2d(32, 32, kernel_size=(1, 1), stride=(1, 1))
+      )
+      (dropout): Dropout2d(p=0.2, inplace=False)
+    )
+  )
+  (layer2): Sequential(
+    (0): ResidualBlock(
+      (conv1): Conv2d(32, 64, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential(
+        (0): Conv2d(32, 64, kernel_size=(1, 1), stride=(2, 2), bias=False)
+        (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+      (se): SEBlock(
+        (squeeze): AdaptiveAvgPool2d(output_size=1)
+        (excitation): Sequential(
+          (0): Linear(in_features=64, out_features=4, bias=False)
+          (1): ReLU(inplace=True)
+          (2): Linear(in_features=4, out_features=64, bias=False)
+          (3): Sigmoid()
+        )
+      )
+      (attention): AttentionBlock(
+        (query): Conv2d(64, 8, kernel_size=(1, 1), stride=(1, 1))
+        (key): Conv2d(64, 8, kernel_size=(1, 1), stride=(1, 1))
+        (value): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+      )
+      (dropout): Dropout2d(p=0.2, inplace=False)
+    )
+    (1): ResidualBlock(
+      (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential()
+      (se): SEBlock(
+        (squeeze): AdaptiveAvgPool2d(output_size=1)
+        (excitation): Sequential(
+          (0): Linear(in_features=64, out_features=4, bias=False)
+          (1): ReLU(inplace=True)
+          (2): Linear(in_features=4, out_features=64, bias=False)
+          (3): Sigmoid()
+        )
+      )
+      (attention): AttentionBlock(
+        (query): Conv2d(64, 8, kernel_size=(1, 1), stride=(1, 1))
+        (key): Conv2d(64, 8, kernel_size=(1, 1), stride=(1, 1))
+        (value): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+      )
+      (dropout): Dropout2d(p=0.2, inplace=False)
+    )
+  )
+  (layer3): Sequential(
+    (0): ResidualBlock(
+      (conv1): Conv2d(64, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential(
+        (0): Conv2d(64, 128, kernel_size=(1, 1), stride=(2, 2), bias=False)
+        (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+      (se): SEBlock(
+        (squeeze): AdaptiveAvgPool2d(output_size=1)
+        (excitation): Sequential(
+          (0): Linear(in_features=128, out_features=8, bias=False)
+          (1): ReLU(inplace=True)
+          (2): Linear(in_features=8, out_features=128, bias=False)
+          (3): Sigmoid()
+        )
+      )
+      (attention): AttentionBlock(
+        (query): Conv2d(128, 16, kernel_size=(1, 1), stride=(1, 1))
+        (key): Conv2d(128, 16, kernel_size=(1, 1), stride=(1, 1))
+        (value): Conv2d(128, 128, kernel_size=(1, 1), stride=(1, 1))
+      )
+      (dropout): Dropout2d(p=0.2, inplace=False)
+    )
+    (1): ResidualBlock(
+      (conv1): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential()
+      (se): SEBlock(
+        (squeeze): AdaptiveAvgPool2d(output_size=1)
+        (excitation): Sequential(
+          (0): Linear(in_features=128, out_features=8, bias=False)
+          (1): ReLU(inplace=True)
+          (2): Linear(in_features=8, out_features=128, bias=False)
+          (3): Sigmoid()
+        )
+      )
+      (attention): AttentionBlock(
+        (query): Conv2d(128, 16, kernel_size=(1, 1), stride=(1, 1))
+        (key): Conv2d(128, 16, kernel_size=(1, 1), stride=(1, 1))
+        (value): Conv2d(128, 128, kernel_size=(1, 1), stride=(1, 1))
+      )
+      (dropout): Dropout2d(p=0.2, inplace=False)
+    )
+  )
+  (fpn1): FPNBlock(
+    (conv1): Conv2d(128, 64, kernel_size=(1, 1), stride=(1, 1))
+    (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (upsample): Upsample(scale_factor=2.0, mode='bilinear')
+  )
+  (fpn2): FPNBlock(
+    (conv1): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1))
+    (conv2): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (upsample): Upsample(scale_factor=2.0, mode='bilinear')
+  )
+  (classifier): Sequential(
+    (0): AdaptiveAvgPool2d(output_size=1)
+    (1): Flatten(start_dim=1, end_dim=-1)
+    (2): Linear(in_features=32, out_features=512, bias=True)
+    (3): BatchNorm1d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (4): ReLU(inplace=True)
+    (5): Dropout(p=0.3, inplace=False)
+    (6): Linear(in_features=512, out_features=10, bias=True)
+  )
+)
+2025-05-30 11:51:39,114 - INFO - Epoch [1/100] (36.23s)
+2025-05-30 11:51:39,115 - INFO - Train Loss: 2.3549, Train Acc: 12.29%
+2025-05-30 11:51:39,115 - INFO - Val Loss: 2.3935, Val Acc: 4.52%
+2025-05-30 11:52:13,523 - INFO - Epoch [2/100] (34.41s)
+2025-05-30 11:52:13,524 - INFO - Train Loss: 2.3493, Train Acc: 13.42%
+2025-05-30 11:52:13,524 - INFO - Val Loss: 2.3520, Val Acc: 12.43%
+2025-05-30 11:52:48,893 - INFO - Epoch [3/100] (35.37s)
+2025-05-30 11:52:48,894 - INFO - Train Loss: 2.3289, Train Acc: 16.38%
+2025-05-30 11:52:48,894 - INFO - Val Loss: 2.3022, Val Acc: 14.12%
+2025-05-30 11:53:24,091 - INFO - Epoch [4/100] (35.20s)
+2025-05-30 11:53:24,091 - INFO - Train Loss: 2.2663, Train Acc: 14.41%
+2025-05-30 11:53:24,091 - INFO - Val Loss: 2.2213, Val Acc: 20.34%
+2025-05-30 11:53:58,891 - INFO - Epoch [5/100] (34.80s)
+2025-05-30 11:53:58,892 - INFO - Train Loss: 2.1806, Train Acc: 16.53%
+2025-05-30 11:53:58,892 - INFO - Val Loss: 1.9686, Val Acc: 22.03%
+2025-05-30 11:54:33,719 - INFO - Epoch [6/100] (34.83s)
+2025-05-30 11:54:33,720 - INFO - Train Loss: 2.0820, Train Acc: 22.88%
+2025-05-30 11:54:33,720 - INFO - Val Loss: 1.8761, Val Acc: 22.60%
+2025-05-30 11:55:09,718 - INFO - Epoch [7/100] (36.00s)
+2025-05-30 11:55:09,718 - INFO - Train Loss: 1.9764, Train Acc: 25.28%
+2025-05-30 11:55:09,718 - INFO - Val Loss: 1.8036, Val Acc: 30.51%
+2025-05-30 11:55:45,936 - INFO - Epoch [8/100] (36.22s)
+2025-05-30 11:55:45,936 - INFO - Train Loss: 1.8745, Train Acc: 28.81%
+2025-05-30 11:55:45,936 - INFO - Val Loss: 1.7368, Val Acc: 32.20%
+2025-05-30 11:56:22,636 - INFO - Epoch [9/100] (36.70s)
+2025-05-30 11:56:22,636 - INFO - Train Loss: 1.7811, Train Acc: 36.02%
+2025-05-30 11:56:22,636 - INFO - Val Loss: 1.6320, Val Acc: 37.85%
+2025-05-30 11:56:59,906 - INFO - Epoch [10/100] (37.27s)
+2025-05-30 11:56:59,906 - INFO - Train Loss: 1.7444, Train Acc: 37.01%
+2025-05-30 11:56:59,906 - INFO - Val Loss: 1.5848, Val Acc: 40.68%
+2025-05-30 12:21:52,271 - INFO - Epoch [11/100] (1492.36s)
+2025-05-30 12:21:52,272 - INFO - Train Loss: 1.6889, Train Acc: 38.56%
+2025-05-30 12:21:52,272 - INFO - Val Loss: 1.4147, Val Acc: 50.28%
+2025-05-30 12:22:29,228 - INFO - Epoch [12/100] (36.96s)
+2025-05-30 12:22:29,228 - INFO - Train Loss: 1.4756, Train Acc: 47.18%
+2025-05-30 12:22:29,228 - INFO - Val Loss: 1.2367, Val Acc: 58.19%
+2025-05-30 12:23:06,115 - INFO - Epoch [13/100] (36.89s)
+2025-05-30 12:23:06,115 - INFO - Train Loss: 1.2368, Train Acc: 57.34%
+2025-05-30 12:23:06,116 - INFO - Val Loss: 1.3326, Val Acc: 46.89%
+2025-05-30 12:23:43,118 - INFO - Epoch [14/100] (37.00s)
+2025-05-30 12:23:43,119 - INFO - Train Loss: 1.0092, Train Acc: 64.69%
+2025-05-30 12:23:43,119 - INFO - Val Loss: 1.1206, Val Acc: 53.67%
+2025-05-30 12:24:48,135 - INFO - Epoch [15/100] (65.02s)
+2025-05-30 12:24:48,135 - INFO - Train Loss: 0.9899, Train Acc: 67.37%
+2025-05-30 12:24:48,135 - INFO - Val Loss: 1.2111, Val Acc: 57.63%
+2025-05-30 12:26:40,488 - INFO - Epoch [16/100] (112.35s)
+2025-05-30 12:26:40,490 - INFO - Train Loss: 0.9567, Train Acc: 68.50%
+2025-05-30 12:26:40,491 - INFO - Val Loss: 1.0546, Val Acc: 66.10%
+2025-05-30 12:27:17,460 - INFO - Epoch [17/100] (36.97s)
+2025-05-30 12:27:17,460 - INFO - Train Loss: 0.9192, Train Acc: 69.77%
+2025-05-30 12:27:17,460 - INFO - Val Loss: 0.9934, Val Acc: 64.97%
+2025-05-30 12:28:19,042 - INFO - Epoch [18/100] (61.58s)
+2025-05-30 12:28:19,042 - INFO - Train Loss: 0.7408, Train Acc: 74.58%
+2025-05-30 12:28:19,042 - INFO - Val Loss: 0.8290, Val Acc: 71.75%
+2025-05-30 12:29:10,469 - INFO - Epoch [19/100] (51.43s)
+2025-05-30 12:29:10,470 - INFO - Train Loss: 0.7115, Train Acc: 73.87%
+2025-05-30 12:29:10,470 - INFO - Val Loss: 0.6365, Val Acc: 75.14%
+2025-05-30 12:29:49,402 - INFO - Epoch [20/100] (38.93s)
+2025-05-30 12:29:49,402 - INFO - Train Loss: 0.6661, Train Acc: 79.24%
+2025-05-30 12:29:49,402 - INFO - Val Loss: 0.5130, Val Acc: 84.75%
+2025-05-30 12:32:09,625 - INFO - Epoch [21/100] (140.22s)
+2025-05-30 12:32:09,626 - INFO - Train Loss: 0.6111, Train Acc: 81.21%
+2025-05-30 12:32:09,626 - INFO - Val Loss: 0.4379, Val Acc: 85.31%
+2025-05-30 12:33:09,428 - INFO - Epoch [22/100] (59.80s)
+2025-05-30 12:33:09,429 - INFO - Train Loss: 0.5705, Train Acc: 83.19%
+2025-05-30 12:33:09,429 - INFO - Val Loss: 0.4164, Val Acc: 87.57%
+2025-05-30 12:33:47,519 - INFO - Epoch [23/100] (38.09s)
+2025-05-30 12:33:47,519 - INFO - Train Loss: 0.4748, Train Acc: 86.58%
+2025-05-30 12:33:47,519 - INFO - Val Loss: 0.3649, Val Acc: 88.14%
+2025-05-30 12:34:26,981 - INFO - Epoch [24/100] (39.46s)
+2025-05-30 12:34:26,981 - INFO - Train Loss: 0.4456, Train Acc: 86.30%
+2025-05-30 12:34:26,981 - INFO - Val Loss: 0.3293, Val Acc: 90.40%
+2025-05-30 12:35:05,767 - INFO - Epoch [25/100] (38.79s)
+2025-05-30 12:35:05,768 - INFO - Train Loss: 0.3916, Train Acc: 86.58%
+2025-05-30 12:35:05,768 - INFO - Val Loss: 0.3117, Val Acc: 89.27%
+2025-05-30 12:35:44,677 - INFO - Epoch [26/100] (38.91s)
+2025-05-30 12:35:44,678 - INFO - Train Loss: 0.4138, Train Acc: 90.11%
+2025-05-30 12:35:44,678 - INFO - Val Loss: 0.2952, Val Acc: 90.96%
+2025-05-30 12:36:23,654 - INFO - Epoch [27/100] (38.98s)
+2025-05-30 12:36:23,654 - INFO - Train Loss: 0.4062, Train Acc: 88.84%
+2025-05-30 12:36:23,655 - INFO - Val Loss: 0.2830, Val Acc: 92.09%
+2025-05-30 12:37:02,655 - INFO - Epoch [28/100] (39.00s)
+2025-05-30 12:37:02,655 - INFO - Train Loss: 0.3505, Train Acc: 90.40%
+2025-05-30 12:37:02,655 - INFO - Val Loss: 0.2749, Val Acc: 92.09%
+2025-05-30 12:37:40,692 - INFO - Epoch [29/100] (38.04s)
+2025-05-30 12:37:40,692 - INFO - Train Loss: 0.3367, Train Acc: 91.10%
+2025-05-30 12:37:40,692 - INFO - Val Loss: 0.2777, Val Acc: 92.09%
+2025-05-30 12:38:20,015 - INFO - Epoch [30/100] (39.32s)
+2025-05-30 12:38:20,015 - INFO - Train Loss: 0.3080, Train Acc: 92.23%
+2025-05-30 12:38:20,016 - INFO - Val Loss: 0.2671, Val Acc: 93.22%
+2025-05-30 12:39:00,420 - INFO - Epoch [31/100] (40.40s)
+2025-05-30 12:39:00,420 - INFO - Train Loss: 0.4674, Train Acc: 86.86%
+2025-05-30 12:39:00,420 - INFO - Val Loss: 0.4803, Val Acc: 86.44%
+2025-05-30 12:39:39,369 - INFO - Epoch [32/100] (38.95s)
+2025-05-30 12:39:39,369 - INFO - Train Loss: 0.4987, Train Acc: 87.29%
+2025-05-30 12:39:39,370 - INFO - Val Loss: 0.4470, Val Acc: 85.88%
+2025-05-30 12:40:19,146 - INFO - Epoch [33/100] (39.78s)
+2025-05-30 12:40:19,147 - INFO - Train Loss: 0.4544, Train Acc: 85.45%
+2025-05-30 12:40:19,147 - INFO - Val Loss: 0.5568, Val Acc: 78.53%
+2025-05-30 12:40:59,404 - INFO - Epoch [34/100] (40.26s)
+2025-05-30 12:40:59,404 - INFO - Train Loss: 0.4870, Train Acc: 85.59%
+2025-05-30 12:40:59,404 - INFO - Val Loss: 0.5614, Val Acc: 82.49%
+2025-05-30 12:41:39,564 - INFO - Epoch [35/100] (40.16s)
+2025-05-30 12:41:39,565 - INFO - Train Loss: 0.4555, Train Acc: 85.45%
+2025-05-30 12:41:39,565 - INFO - Val Loss: 0.3789, Val Acc: 88.70%
+2025-05-30 12:42:19,483 - INFO - Epoch [36/100] (39.92s)
+2025-05-30 12:42:19,484 - INFO - Train Loss: 0.3410, Train Acc: 89.69%
+2025-05-30 12:42:19,484 - INFO - Val Loss: 0.4104, Val Acc: 89.27%
+2025-05-30 12:43:01,022 - INFO - Epoch [37/100] (41.54s)
+2025-05-30 12:43:01,022 - INFO - Train Loss: 0.4677, Train Acc: 86.44%
+2025-05-30 12:43:01,022 - INFO - Val Loss: 0.4551, Val Acc: 88.14%
+2025-05-30 12:43:41,625 - INFO - Epoch [38/100] (40.60s)
+2025-05-30 12:43:41,625 - INFO - Train Loss: 0.3716, Train Acc: 89.27%
+2025-05-30 12:43:41,625 - INFO - Val Loss: 0.4396, Val Acc: 85.88%
+2025-05-30 12:44:21,722 - INFO - Epoch [39/100] (40.10s)
+2025-05-30 12:44:21,722 - INFO - Train Loss: 0.4666, Train Acc: 88.28%
+2025-05-30 12:44:21,723 - INFO - Val Loss: 0.3534, Val Acc: 89.83%
+2025-05-30 12:45:01,602 - INFO - Epoch [40/100] (39.88s)
+2025-05-30 12:45:01,603 - INFO - Train Loss: 0.3313, Train Acc: 90.54%
+2025-05-30 12:45:01,603 - INFO - Val Loss: 0.3131, Val Acc: 89.83%
+2025-05-30 12:45:41,611 - INFO - Epoch [41/100] (40.01s)
+2025-05-30 12:45:41,611 - INFO - Train Loss: 0.2992, Train Acc: 88.98%
+2025-05-30 12:45:41,611 - INFO - Val Loss: 0.1873, Val Acc: 93.22%
+2025-05-30 12:46:22,407 - INFO - Epoch [42/100] (40.80s)
+2025-05-30 12:46:22,407 - INFO - Train Loss: 0.3109, Train Acc: 90.82%
+2025-05-30 12:46:22,407 - INFO - Val Loss: 0.1862, Val Acc: 91.53%
+2025-05-30 12:47:03,654 - INFO - Epoch [43/100] (41.25s)
+2025-05-30 12:47:03,654 - INFO - Train Loss: 0.3286, Train Acc: 90.11%
+2025-05-30 12:47:03,654 - INFO - Val Loss: 0.3867, Val Acc: 87.01%
+2025-05-30 12:47:43,827 - INFO - Epoch [44/100] (40.17s)
+2025-05-30 12:47:43,827 - INFO - Train Loss: 0.3964, Train Acc: 90.54%
+2025-05-30 12:47:43,827 - INFO - Val Loss: 0.3934, Val Acc: 87.57%
+2025-05-30 12:48:24,720 - INFO - Epoch [45/100] (40.89s)
+2025-05-30 12:48:24,720 - INFO - Train Loss: 0.2649, Train Acc: 91.95%
+2025-05-30 12:48:24,720 - INFO - Val Loss: 0.2704, Val Acc: 92.66%
+2025-05-30 12:49:06,262 - INFO - Epoch [46/100] (41.54s)
+2025-05-30 12:49:06,262 - INFO - Train Loss: 0.2513, Train Acc: 91.95%
+2025-05-30 12:49:06,262 - INFO - Val Loss: 0.3235, Val Acc: 90.40%
+2025-05-30 12:49:47,258 - INFO - Epoch [47/100] (40.99s)
+2025-05-30 12:49:47,258 - INFO - Train Loss: 0.3705, Train Acc: 89.27%
+2025-05-30 12:49:47,258 - INFO - Val Loss: 0.3768, Val Acc: 90.40%
+2025-05-30 12:50:28,851 - INFO - Epoch [48/100] (41.59s)
+2025-05-30 12:50:28,852 - INFO - Train Loss: 0.2760, Train Acc: 92.09%
+2025-05-30 12:50:28,852 - INFO - Val Loss: 0.2636, Val Acc: 94.35%
+2025-05-30 12:51:11,763 - INFO - Epoch [49/100] (42.91s)
+2025-05-30 12:51:11,763 - INFO - Train Loss: 0.2377, Train Acc: 92.80%
+2025-05-30 12:51:11,763 - INFO - Val Loss: 0.2735, Val Acc: 93.22%
+2025-05-30 12:51:55,297 - INFO - Epoch [50/100] (43.53s)
+2025-05-30 12:51:55,297 - INFO - Train Loss: 0.2511, Train Acc: 93.50%
+2025-05-30 12:51:55,298 - INFO - Val Loss: 0.2053, Val Acc: 93.22%
+2025-05-30 12:52:38,657 - INFO - Epoch [51/100] (43.36s)
+2025-05-30 12:52:38,658 - INFO - Train Loss: 0.1875, Train Acc: 93.50%
+2025-05-30 12:52:38,658 - INFO - Val Loss: 0.2160, Val Acc: 94.92%
+2025-05-30 12:53:21,479 - INFO - Epoch [52/100] (42.82s)
+2025-05-30 12:53:21,479 - INFO - Train Loss: 0.3521, Train Acc: 93.50%
+2025-05-30 12:53:21,479 - INFO - Val Loss: 0.1477, Val Acc: 94.35%
+2025-05-30 12:54:04,901 - INFO - Epoch [53/100] (43.42s)
+2025-05-30 12:54:04,901 - INFO - Train Loss: 0.2427, Train Acc: 93.64%
+2025-05-30 12:54:04,901 - INFO - Val Loss: 0.2140, Val Acc: 92.66%
+2025-05-30 12:54:49,432 - INFO - Epoch [54/100] (44.53s)
+2025-05-30 12:54:49,432 - INFO - Train Loss: 0.1897, Train Acc: 94.49%
+2025-05-30 12:54:49,433 - INFO - Val Loss: 0.1652, Val Acc: 93.79%
+2025-05-30 12:55:33,807 - INFO - Epoch [55/100] (44.37s)
+2025-05-30 12:55:33,808 - INFO - Train Loss: 0.1877, Train Acc: 94.49%
+2025-05-30 12:55:33,808 - INFO - Val Loss: 0.1460, Val Acc: 93.22%
+2025-05-30 12:56:18,553 - INFO - Epoch [56/100] (44.74s)
+2025-05-30 12:56:18,553 - INFO - Train Loss: 0.1651, Train Acc: 94.07%
+2025-05-30 12:56:18,554 - INFO - Val Loss: 0.1695, Val Acc: 94.35%
+2025-05-30 12:57:03,217 - INFO - Epoch [57/100] (44.66s)
+2025-05-30 12:57:03,218 - INFO - Train Loss: 0.1503, Train Acc: 95.34%
+2025-05-30 12:57:03,218 - INFO - Val Loss: 0.1795, Val Acc: 94.35%
+2025-05-30 13:05:50,589 - INFO - Epoch [58/100] (527.37s)
+2025-05-30 13:05:50,590 - INFO - Train Loss: 0.1552, Train Acc: 94.63%
+2025-05-30 13:05:50,590 - INFO - Val Loss: 0.1722, Val Acc: 93.79%
+2025-05-30 13:06:50,822 - INFO - Epoch [59/100] (60.23s)
+2025-05-30 13:06:50,823 - INFO - Train Loss: 0.1279, Train Acc: 96.19%
+2025-05-30 13:06:50,823 - INFO - Val Loss: 0.2101, Val Acc: 92.66%
+2025-05-30 13:08:37,253 - INFO - Epoch [60/100] (106.43s)
+2025-05-30 13:08:37,254 - INFO - Train Loss: 0.1871, Train Acc: 95.20%
+2025-05-30 13:08:37,254 - INFO - Val Loss: 0.1839, Val Acc: 93.22%
+2025-05-30 13:09:21,019 - INFO - Epoch [61/100] (43.76s)
+2025-05-30 13:09:21,019 - INFO - Train Loss: 0.1461, Train Acc: 97.32%
+2025-05-30 13:09:21,019 - INFO - Val Loss: 0.1695, Val Acc: 94.92%
+2025-05-30 13:10:04,731 - INFO - Epoch [62/100] (43.71s)
+2025-05-30 13:10:04,731 - INFO - Train Loss: 0.1323, Train Acc: 96.05%
+2025-05-30 13:10:04,731 - INFO - Val Loss: 0.1416, Val Acc: 94.92%
+2025-05-30 13:10:49,112 - INFO - Epoch [63/100] (44.38s)
+2025-05-30 13:10:49,113 - INFO - Train Loss: 0.1424, Train Acc: 95.76%
+2025-05-30 13:10:49,113 - INFO - Val Loss: 0.1388, Val Acc: 93.22%
+2025-05-30 13:11:32,962 - INFO - Epoch [64/100] (43.85s)
+2025-05-30 13:11:32,963 - INFO - Train Loss: 0.1038, Train Acc: 96.61%
+2025-05-30 13:11:32,963 - INFO - Val Loss: 0.1449, Val Acc: 93.79%
+2025-05-30 13:12:17,555 - INFO - Epoch [65/100] (44.59s)
+2025-05-30 13:12:17,555 - INFO - Train Loss: 0.1468, Train Acc: 96.61%
+2025-05-30 13:12:17,555 - INFO - Val Loss: 0.1529, Val Acc: 93.79%
+2025-05-30 13:13:00,965 - INFO - Epoch [66/100] (43.41s)
+2025-05-30 13:13:00,965 - INFO - Train Loss: 0.1063, Train Acc: 96.33%
+2025-05-30 13:13:00,966 - INFO - Val Loss: 0.1533, Val Acc: 93.79%
+2025-05-30 13:14:00,854 - INFO - Epoch [67/100] (59.89s)
+2025-05-30 13:14:00,854 - INFO - Train Loss: 0.1106, Train Acc: 97.18%
+2025-05-30 13:14:00,854 - INFO - Val Loss: 0.1475, Val Acc: 93.79%
+2025-05-30 13:14:44,014 - INFO - Epoch [68/100] (43.16s)
+2025-05-30 13:14:44,014 - INFO - Train Loss: 0.0840, Train Acc: 97.46%
+2025-05-30 13:14:44,014 - INFO - Val Loss: 0.1443, Val Acc: 93.79%
+2025-05-30 13:15:27,835 - INFO - Epoch [69/100] (43.82s)
+2025-05-30 13:15:27,835 - INFO - Train Loss: 0.1322, Train Acc: 96.89%
+2025-05-30 13:15:27,836 - INFO - Val Loss: 0.1410, Val Acc: 93.22%
+2025-05-30 13:16:11,056 - INFO - Epoch [70/100] (43.22s)
+2025-05-30 13:16:11,057 - INFO - Train Loss: 0.1049, Train Acc: 96.89%
+2025-05-30 13:16:11,057 - INFO - Val Loss: 0.1475, Val Acc: 93.79%
+2025-05-30 13:16:54,632 - INFO - Epoch [71/100] (43.58s)
+2025-05-30 13:16:54,632 - INFO - Train Loss: 0.2020, Train Acc: 94.63%
+2025-05-30 13:16:54,633 - INFO - Val Loss: 0.3154, Val Acc: 92.09%
+2025-05-30 13:16:54,633 - INFO - Early stopping triggered after 71 epochs
+2025-05-30 13:16:54,709 - INFO - Model training completed
+2025-05-30 13:16:54,710 - INFO - 
+Processing image: test_image.jpg
+2025-05-30 13:16:54,870 - ERROR - Error in extract_card_number: name 'four_point_transform' is not defined
+2025-05-30 13:16:54,871 - INFO - Detected card number: Error processing card: name 'four_point_transform' is not defined
+2025-05-30 13:17:04,472 - INFO - Starting model training...
+2025-05-30 13:17:04,889 - INFO - Input tensor shape: torch.Size([885, 1, 32, 32])
+2025-05-30 13:17:05,010 - INFO - Model architecture:
+AdvancedCreditCardNet(
+  (conv1): Sequential(
+    (0): Conv2d(1, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): ReLU(inplace=True)
+  )
+  (layer1): Sequential(
+    (0): ResidualBlock(
+      (conv1): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential()
+      (se): SEBlock(
+        (squeeze): AdaptiveAvgPool2d(output_size=1)
+        (excitation): Sequential(
+          (0): Linear(in_features=32, out_features=2, bias=False)
+          (1): ReLU(inplace=True)
+          (2): Linear(in_features=2, out_features=32, bias=False)
+          (3): Sigmoid()
+        )
+      )
+      (attention): AttentionBlock(
+        (query): Conv2d(32, 4, kernel_size=(1, 1), stride=(1, 1))
+        (key): Conv2d(32, 4, kernel_size=(1, 1), stride=(1, 1))
+        (value): Conv2d(32, 32, kernel_size=(1, 1), stride=(1, 1))
+      )
+      (dropout): Dropout2d(p=0.2, inplace=False)
+    )
+    (1): ResidualBlock(
+      (conv1): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential()
+      (se): SEBlock(
+        (squeeze): AdaptiveAvgPool2d(output_size=1)
+        (excitation): Sequential(
+          (0): Linear(in_features=32, out_features=2, bias=False)
+          (1): ReLU(inplace=True)
+          (2): Linear(in_features=2, out_features=32, bias=False)
+          (3): Sigmoid()
+        )
+      )
+      (attention): AttentionBlock(
+        (query): Conv2d(32, 4, kernel_size=(1, 1), stride=(1, 1))
+        (key): Conv2d(32, 4, kernel_size=(1, 1), stride=(1, 1))
+        (value): Conv2d(32, 32, kernel_size=(1, 1), stride=(1, 1))
+      )
+      (dropout): Dropout2d(p=0.2, inplace=False)
+    )
+  )
+  (layer2): Sequential(
+    (0): ResidualBlock(
+      (conv1): Conv2d(32, 64, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential(
+        (0): Conv2d(32, 64, kernel_size=(1, 1), stride=(2, 2), bias=False)
+        (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+      (se): SEBlock(
+        (squeeze): AdaptiveAvgPool2d(output_size=1)
+        (excitation): Sequential(
+          (0): Linear(in_features=64, out_features=4, bias=False)
+          (1): ReLU(inplace=True)
+          (2): Linear(in_features=4, out_features=64, bias=False)
+          (3): Sigmoid()
+        )
+      )
+      (attention): AttentionBlock(
+        (query): Conv2d(64, 8, kernel_size=(1, 1), stride=(1, 1))
+        (key): Conv2d(64, 8, kernel_size=(1, 1), stride=(1, 1))
+        (value): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+      )
+      (dropout): Dropout2d(p=0.2, inplace=False)
+    )
+    (1): ResidualBlock(
+      (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential()
+      (se): SEBlock(
+        (squeeze): AdaptiveAvgPool2d(output_size=1)
+        (excitation): Sequential(
+          (0): Linear(in_features=64, out_features=4, bias=False)
+          (1): ReLU(inplace=True)
+          (2): Linear(in_features=4, out_features=64, bias=False)
+          (3): Sigmoid()
+        )
+      )
+      (attention): AttentionBlock(
+        (query): Conv2d(64, 8, kernel_size=(1, 1), stride=(1, 1))
+        (key): Conv2d(64, 8, kernel_size=(1, 1), stride=(1, 1))
+        (value): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+      )
+      (dropout): Dropout2d(p=0.2, inplace=False)
+    )
+  )
+  (layer3): Sequential(
+    (0): ResidualBlock(
+      (conv1): Conv2d(64, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential(
+        (0): Conv2d(64, 128, kernel_size=(1, 1), stride=(2, 2), bias=False)
+        (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+      (se): SEBlock(
+        (squeeze): AdaptiveAvgPool2d(output_size=1)
+        (excitation): Sequential(
+          (0): Linear(in_features=128, out_features=8, bias=False)
+          (1): ReLU(inplace=True)
+          (2): Linear(in_features=8, out_features=128, bias=False)
+          (3): Sigmoid()
+        )
+      )
+      (attention): AttentionBlock(
+        (query): Conv2d(128, 16, kernel_size=(1, 1), stride=(1, 1))
+        (key): Conv2d(128, 16, kernel_size=(1, 1), stride=(1, 1))
+        (value): Conv2d(128, 128, kernel_size=(1, 1), stride=(1, 1))
+      )
+      (dropout): Dropout2d(p=0.2, inplace=False)
+    )
+    (1): ResidualBlock(
+      (conv1): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential()
+      (se): SEBlock(
+        (squeeze): AdaptiveAvgPool2d(output_size=1)
+        (excitation): Sequential(
+          (0): Linear(in_features=128, out_features=8, bias=False)
+          (1): ReLU(inplace=True)
+          (2): Linear(in_features=8, out_features=128, bias=False)
+          (3): Sigmoid()
+        )
+      )
+      (attention): AttentionBlock(
+        (query): Conv2d(128, 16, kernel_size=(1, 1), stride=(1, 1))
+        (key): Conv2d(128, 16, kernel_size=(1, 1), stride=(1, 1))
+        (value): Conv2d(128, 128, kernel_size=(1, 1), stride=(1, 1))
+      )
+      (dropout): Dropout2d(p=0.2, inplace=False)
+    )
+  )
+  (fpn1): FPNBlock(
+    (conv1): Conv2d(128, 64, kernel_size=(1, 1), stride=(1, 1))
+    (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (upsample): Upsample(scale_factor=2.0, mode='bilinear')
+  )
+  (fpn2): FPNBlock(
+    (conv1): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1))
+    (conv2): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (upsample): Upsample(scale_factor=2.0, mode='bilinear')
+  )
+  (classifier): Sequential(
+    (0): AdaptiveAvgPool2d(output_size=1)
+    (1): Flatten(start_dim=1, end_dim=-1)
+    (2): Linear(in_features=32, out_features=512, bias=True)
+    (3): BatchNorm1d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (4): ReLU(inplace=True)
+    (5): Dropout(p=0.3, inplace=False)
+    (6): Linear(in_features=512, out_features=10, bias=True)
+  )
+)
+2025-05-30 13:17:59,941 - INFO - Epoch [1/100] (54.93s)
+2025-05-30 13:17:59,941 - INFO - Train Loss: 2.3715, Train Acc: 11.58%
+2025-05-30 13:17:59,941 - INFO - Val Loss: 2.4194, Val Acc: 14.12%
+2025-05-30 13:20:19,895 - INFO - Epoch [2/100] (139.95s)
+2025-05-30 13:20:19,895 - INFO - Train Loss: 2.3453, Train Acc: 13.70%
+2025-05-30 13:20:19,896 - INFO - Val Loss: 2.2318, Val Acc: 21.47%
+2025-05-30 13:22:41,595 - INFO - Epoch [3/100] (141.70s)
+2025-05-30 13:22:41,595 - INFO - Train Loss: 2.2177, Train Acc: 17.51%
+2025-05-30 13:22:41,595 - INFO - Val Loss: 1.9302, Val Acc: 19.21%
+2025-05-30 13:25:21,484 - INFO - Epoch [4/100] (159.89s)
+2025-05-30 13:25:21,485 - INFO - Train Loss: 2.0880, Train Acc: 25.28%
+2025-05-30 13:25:21,485 - INFO - Val Loss: 2.1478, Val Acc: 21.47%
+2025-05-30 13:28:15,101 - INFO - Epoch [5/100] (173.62s)
+2025-05-30 13:28:15,102 - INFO - Train Loss: 1.9835, Train Acc: 26.98%
+2025-05-30 13:28:15,102 - INFO - Val Loss: 1.8065, Val Acc: 33.90%
+2025-05-30 13:31:14,044 - INFO - Epoch [6/100] (178.94s)
+2025-05-30 13:31:14,045 - INFO - Train Loss: 1.8233, Train Acc: 34.75%
+2025-05-30 13:31:14,045 - INFO - Val Loss: 1.6323, Val Acc: 38.42%
+2025-05-30 13:32:11,216 - INFO - Epoch [7/100] (57.17s)
+2025-05-30 13:32:11,217 - INFO - Train Loss: 1.5717, Train Acc: 44.07%
+2025-05-30 13:32:11,217 - INFO - Val Loss: 1.3968, Val Acc: 46.89%
+2025-05-30 13:33:01,119 - INFO - Epoch [8/100] (49.90s)
+2025-05-30 13:33:01,120 - INFO - Train Loss: 1.4118, Train Acc: 51.13%
+2025-05-30 13:33:01,120 - INFO - Val Loss: 1.2033, Val Acc: 51.41%
+2025-05-30 13:33:42,196 - INFO - Epoch [9/100] (41.08s)
+2025-05-30 13:33:42,197 - INFO - Train Loss: 1.3159, Train Acc: 56.36%
+2025-05-30 13:33:42,197 - INFO - Val Loss: 1.1677, Val Acc: 58.19%
+2025-05-30 13:34:22,089 - INFO - Epoch [10/100] (39.89s)
+2025-05-30 13:34:22,089 - INFO - Train Loss: 1.3392, Train Acc: 54.10%
+2025-05-30 13:34:22,090 - INFO - Val Loss: 1.1191, Val Acc: 57.63%
+2025-05-30 13:35:02,670 - INFO - Epoch [11/100] (40.58s)
+2025-05-30 13:35:02,670 - INFO - Train Loss: 1.2987, Train Acc: 53.11%
+2025-05-30 13:35:02,670 - INFO - Val Loss: 1.3532, Val Acc: 51.41%
+2025-05-30 13:35:44,297 - INFO - Epoch [12/100] (41.63s)
+2025-05-30 13:35:44,297 - INFO - Train Loss: 1.1100, Train Acc: 62.01%
+2025-05-30 13:35:44,297 - INFO - Val Loss: 1.2551, Val Acc: 51.41%
+2025-05-30 13:37:18,697 - INFO - Epoch [13/100] (94.40s)
+2025-05-30 13:37:18,697 - INFO - Train Loss: 1.1056, Train Acc: 61.16%
+2025-05-30 13:37:18,697 - INFO - Val Loss: 1.3572, Val Acc: 43.50%
+2025-05-30 13:38:41,614 - INFO - Epoch [14/100] (82.92s)
+2025-05-30 13:38:41,615 - INFO - Train Loss: 1.1091, Train Acc: 62.29%
+2025-05-30 13:38:41,615 - INFO - Val Loss: 0.9878, Val Acc: 61.58%
+2025-05-30 13:40:04,928 - INFO - Epoch [15/100] (83.31s)
+2025-05-30 13:40:04,929 - INFO - Train Loss: 0.9613, Train Acc: 69.21%
+2025-05-30 13:40:04,929 - INFO - Val Loss: 0.8894, Val Acc: 68.93%
+2025-05-30 13:41:01,690 - INFO - Epoch [16/100] (56.76s)
+2025-05-30 13:41:01,691 - INFO - Train Loss: 0.9412, Train Acc: 70.34%
+2025-05-30 13:41:01,691 - INFO - Val Loss: 0.8794, Val Acc: 67.80%
+2025-05-30 13:42:04,275 - INFO - Epoch [17/100] (62.58s)
+2025-05-30 13:42:04,275 - INFO - Train Loss: 0.7876, Train Acc: 72.46%
+2025-05-30 13:42:04,275 - INFO - Val Loss: 0.8664, Val Acc: 73.45%
+2025-05-30 13:45:00,855 - INFO - Epoch [18/100] (176.58s)
+2025-05-30 13:45:00,856 - INFO - Train Loss: 0.7796, Train Acc: 74.29%
+2025-05-30 13:45:00,857 - INFO - Val Loss: 0.7598, Val Acc: 73.45%
+2025-05-30 13:47:48,590 - INFO - Epoch [19/100] (167.73s)
+2025-05-30 13:47:48,590 - INFO - Train Loss: 0.6181, Train Acc: 80.93%
+2025-05-30 13:47:48,591 - INFO - Val Loss: 0.6393, Val Acc: 77.40%
+2025-05-30 13:49:03,251 - INFO - Epoch [20/100] (74.66s)
+2025-05-30 13:49:03,251 - INFO - Train Loss: 0.6345, Train Acc: 78.95%
+2025-05-30 13:49:03,252 - INFO - Val Loss: 0.4582, Val Acc: 85.88%
+2025-05-30 13:49:43,575 - INFO - Epoch [21/100] (40.32s)
+2025-05-30 13:49:43,575 - INFO - Train Loss: 0.4793, Train Acc: 85.73%
+2025-05-30 13:49:43,576 - INFO - Val Loss: 0.3684, Val Acc: 88.70%
+2025-05-30 13:50:23,362 - INFO - Epoch [22/100] (39.79s)
+2025-05-30 13:50:23,362 - INFO - Train Loss: 0.5102, Train Acc: 83.47%
+2025-05-30 13:50:23,363 - INFO - Val Loss: 0.3777, Val Acc: 85.31%
+2025-05-30 13:51:03,566 - INFO - Epoch [23/100] (40.20s)
+2025-05-30 13:51:03,566 - INFO - Train Loss: 0.4297, Train Acc: 86.02%
+2025-05-30 13:51:03,566 - INFO - Val Loss: 0.2865, Val Acc: 89.83%
+2025-05-30 13:51:43,557 - INFO - Epoch [24/100] (39.99s)
+2025-05-30 13:51:43,558 - INFO - Train Loss: 0.4608, Train Acc: 90.25%
+2025-05-30 13:51:43,558 - INFO - Val Loss: 0.3473, Val Acc: 90.40%
+2025-05-30 13:52:23,870 - INFO - Epoch [25/100] (40.31s)
+2025-05-30 13:52:23,870 - INFO - Train Loss: 0.3629, Train Acc: 89.55%
+2025-05-30 13:52:23,871 - INFO - Val Loss: 0.2985, Val Acc: 88.14%
+2025-05-30 13:53:04,704 - INFO - Epoch [26/100] (40.83s)
+2025-05-30 13:53:04,704 - INFO - Train Loss: 0.3671, Train Acc: 89.97%
+2025-05-30 13:53:04,704 - INFO - Val Loss: 0.2761, Val Acc: 89.83%
+2025-05-30 13:53:45,237 - INFO - Epoch [27/100] (40.53s)
+2025-05-30 13:53:45,237 - INFO - Train Loss: 0.3078, Train Acc: 91.53%
+2025-05-30 13:53:45,237 - INFO - Val Loss: 0.2495, Val Acc: 90.96%
+2025-05-30 13:54:25,587 - INFO - Epoch [28/100] (40.35s)
+2025-05-30 13:54:25,587 - INFO - Train Loss: 0.3559, Train Acc: 90.96%
+2025-05-30 13:54:25,587 - INFO - Val Loss: 0.2326, Val Acc: 91.53%
+2025-05-30 13:55:06,505 - INFO - Epoch [29/100] (40.92s)
+2025-05-30 13:55:06,505 - INFO - Train Loss: 0.2926, Train Acc: 91.53%
+2025-05-30 13:55:06,505 - INFO - Val Loss: 0.2349, Val Acc: 92.09%
+2025-05-30 13:56:30,120 - INFO - Epoch [30/100] (83.61s)
+2025-05-30 13:56:30,120 - INFO - Train Loss: 0.2974, Train Acc: 90.96%
+2025-05-30 13:56:30,120 - INFO - Val Loss: 0.2233, Val Acc: 92.66%
+2025-05-30 13:58:18,958 - INFO - Epoch [31/100] (108.84s)
+2025-05-30 13:58:18,958 - INFO - Train Loss: 0.4189, Train Acc: 87.15%
+2025-05-30 13:58:18,958 - INFO - Val Loss: 0.3755, Val Acc: 87.01%
+2025-05-30 14:01:17,294 - INFO - Epoch [32/100] (178.34s)
+2025-05-30 14:01:17,294 - INFO - Train Loss: 0.5142, Train Acc: 82.49%
+2025-05-30 14:01:17,294 - INFO - Val Loss: 0.7817, Val Acc: 80.79%
+2025-05-30 14:04:14,497 - INFO - Epoch [33/100] (177.20s)
+2025-05-30 14:04:14,497 - INFO - Train Loss: 0.4908, Train Acc: 85.03%
+2025-05-30 14:04:14,498 - INFO - Val Loss: 0.5010, Val Acc: 83.05%
+2025-05-30 14:06:00,985 - INFO - Epoch [34/100] (106.49s)
+2025-05-30 14:06:00,985 - INFO - Train Loss: 0.4195, Train Acc: 87.99%
+2025-05-30 14:06:00,985 - INFO - Val Loss: 0.5541, Val Acc: 80.79%
+2025-05-30 14:06:44,123 - INFO - Epoch [35/100] (43.14s)
+2025-05-30 14:06:44,124 - INFO - Train Loss: 0.4475, Train Acc: 89.27%
+2025-05-30 14:06:44,124 - INFO - Val Loss: 0.4943, Val Acc: 85.31%
+2025-05-30 14:07:27,191 - INFO - Epoch [36/100] (43.07s)
+2025-05-30 14:07:27,191 - INFO - Train Loss: 0.4462, Train Acc: 85.31%
+2025-05-30 14:07:27,191 - INFO - Val Loss: 0.4104, Val Acc: 85.88%
+2025-05-30 14:08:10,794 - INFO - Epoch [37/100] (43.60s)
+2025-05-30 14:08:10,794 - INFO - Train Loss: 0.3791, Train Acc: 87.43%
+2025-05-30 14:08:10,795 - INFO - Val Loss: 0.3099, Val Acc: 89.83%
+2025-05-30 14:08:53,593 - INFO - Epoch [38/100] (42.80s)
+2025-05-30 14:08:53,593 - INFO - Train Loss: 0.3777, Train Acc: 87.43%
+2025-05-30 14:08:53,593 - INFO - Val Loss: 0.3787, Val Acc: 89.83%
+2025-05-30 14:09:37,053 - INFO - Epoch [39/100] (43.46s)
+2025-05-30 14:09:37,053 - INFO - Train Loss: 0.4140, Train Acc: 89.83%
+2025-05-30 14:09:37,054 - INFO - Val Loss: 0.3832, Val Acc: 90.40%
+2025-05-30 14:11:38,926 - INFO - Epoch [40/100] (121.87s)
+2025-05-30 14:11:38,927 - INFO - Train Loss: 0.4024, Train Acc: 89.27%
+2025-05-30 14:11:38,927 - INFO - Val Loss: 0.4242, Val Acc: 85.31%
+2025-05-30 14:14:35,702 - INFO - Epoch [41/100] (176.77s)
+2025-05-30 14:14:35,702 - INFO - Train Loss: 0.3835, Train Acc: 89.41%
+2025-05-30 14:14:35,702 - INFO - Val Loss: 0.2669, Val Acc: 90.96%
+2025-05-30 14:17:54,607 - INFO - Epoch [42/100] (198.90s)
+2025-05-30 14:17:54,608 - INFO - Train Loss: 0.3634, Train Acc: 88.42%
+2025-05-30 14:17:54,608 - INFO - Val Loss: 0.3872, Val Acc: 91.53%
+2025-05-30 14:21:23,842 - INFO - Epoch [43/100] (209.23s)
+2025-05-30 14:21:23,842 - INFO - Train Loss: 0.3013, Train Acc: 90.54%
+2025-05-30 14:21:23,843 - INFO - Val Loss: 0.3566, Val Acc: 88.70%
+2025-05-30 14:24:56,462 - INFO - Epoch [44/100] (212.62s)
+2025-05-30 14:24:56,462 - INFO - Train Loss: 0.3081, Train Acc: 90.68%
+2025-05-30 14:24:56,462 - INFO - Val Loss: 0.3594, Val Acc: 88.14%
+2025-05-30 14:28:27,672 - INFO - Epoch [45/100] (211.21s)
+2025-05-30 14:28:27,672 - INFO - Train Loss: 0.3121, Train Acc: 90.11%
+2025-05-30 14:28:27,673 - INFO - Val Loss: 0.2178, Val Acc: 93.22%
+2025-05-30 14:31:46,515 - INFO - Epoch [46/100] (198.84s)
+2025-05-30 14:31:46,515 - INFO - Train Loss: 0.3071, Train Acc: 92.51%
+2025-05-30 14:31:46,515 - INFO - Val Loss: 0.3136, Val Acc: 90.40%
+2025-05-30 14:32:57,594 - INFO - Epoch [47/100] (71.08s)
+2025-05-30 14:32:57,594 - INFO - Train Loss: 0.3293, Train Acc: 91.24%
+2025-05-30 14:32:57,594 - INFO - Val Loss: 0.2863, Val Acc: 89.27%
+2025-05-30 14:33:41,124 - INFO - Epoch [48/100] (43.53s)
+2025-05-30 14:33:41,124 - INFO - Train Loss: 0.2096, Train Acc: 93.22%
+2025-05-30 14:33:41,124 - INFO - Val Loss: 0.2174, Val Acc: 92.66%
+2025-05-30 14:34:24,980 - INFO - Epoch [49/100] (43.86s)
+2025-05-30 14:34:24,981 - INFO - Train Loss: 0.3036, Train Acc: 91.24%
+2025-05-30 14:34:24,981 - INFO - Val Loss: 0.2582, Val Acc: 89.83%
+2025-05-30 14:35:09,136 - INFO - Epoch [50/100] (44.16s)
+2025-05-30 14:35:09,136 - INFO - Train Loss: 0.2435, Train Acc: 92.66%
+2025-05-30 14:35:09,137 - INFO - Val Loss: 0.2463, Val Acc: 90.96%
+2025-05-30 14:35:53,532 - INFO - Epoch [51/100] (44.40s)
+2025-05-30 14:35:53,533 - INFO - Train Loss: 0.2479, Train Acc: 94.21%
+2025-05-30 14:35:53,533 - INFO - Val Loss: 0.2066, Val Acc: 93.22%
+2025-05-30 14:36:37,350 - INFO - Epoch [52/100] (43.82s)
+2025-05-30 14:36:37,350 - INFO - Train Loss: 0.2051, Train Acc: 93.79%
+2025-05-30 14:36:37,350 - INFO - Val Loss: 0.3073, Val Acc: 89.27%
+2025-05-30 14:37:21,727 - INFO - Epoch [53/100] (44.38s)
+2025-05-30 14:37:21,727 - INFO - Train Loss: 0.2336, Train Acc: 92.80%
+2025-05-30 14:37:21,728 - INFO - Val Loss: 0.1996, Val Acc: 96.05%
+2025-05-30 14:38:05,772 - INFO - Epoch [54/100] (44.04s)
+2025-05-30 14:38:05,772 - INFO - Train Loss: 0.1387, Train Acc: 96.05%
+2025-05-30 14:38:05,773 - INFO - Val Loss: 0.1871, Val Acc: 93.79%
+2025-05-30 14:39:59,953 - INFO - Epoch [55/100] (114.18s)
+2025-05-30 14:39:59,953 - INFO - Train Loss: 0.1882, Train Acc: 93.50%
+2025-05-30 14:39:59,954 - INFO - Val Loss: 0.3096, Val Acc: 91.53%
+2025-05-30 14:42:36,235 - INFO - Epoch [56/100] (156.28s)
+2025-05-30 14:42:36,235 - INFO - Train Loss: 0.1247, Train Acc: 95.62%
+2025-05-30 14:42:36,235 - INFO - Val Loss: 0.2003, Val Acc: 93.22%
+2025-05-30 14:43:36,951 - INFO - Epoch [57/100] (60.72s)
+2025-05-30 14:43:36,952 - INFO - Train Loss: 0.1401, Train Acc: 95.76%
+2025-05-30 14:43:36,952 - INFO - Val Loss: 0.2395, Val Acc: 94.92%
+2025-05-30 14:44:22,116 - INFO - Epoch [58/100] (45.16s)
+2025-05-30 14:44:22,116 - INFO - Train Loss: 0.1276, Train Acc: 96.61%
+2025-05-30 14:44:22,116 - INFO - Val Loss: 0.2351, Val Acc: 94.92%
+2025-05-30 14:46:34,806 - INFO - Epoch [59/100] (132.69s)
+2025-05-30 14:46:34,806 - INFO - Train Loss: 0.1265, Train Acc: 97.46%
+2025-05-30 14:46:34,807 - INFO - Val Loss: 0.2401, Val Acc: 93.79%
+2025-05-30 14:49:33,274 - INFO - Epoch [60/100] (178.47s)
+2025-05-30 14:49:33,274 - INFO - Train Loss: 0.1089, Train Acc: 96.89%
+2025-05-30 14:49:33,274 - INFO - Val Loss: 0.2438, Val Acc: 93.79%
+2025-05-30 14:50:19,322 - INFO - Epoch [61/100] (46.05s)
+2025-05-30 14:50:19,322 - INFO - Train Loss: 0.1358, Train Acc: 96.47%
+2025-05-30 14:50:19,323 - INFO - Val Loss: 0.2084, Val Acc: 94.92%
+2025-05-30 14:51:04,942 - INFO - Epoch [62/100] (45.62s)
+2025-05-30 14:51:04,942 - INFO - Train Loss: 0.1703, Train Acc: 96.05%
+2025-05-30 14:51:04,942 - INFO - Val Loss: 0.1623, Val Acc: 95.48%
+2025-05-30 14:52:59,250 - INFO - Epoch [63/100] (114.31s)
+2025-05-30 14:52:59,251 - INFO - Train Loss: 0.0930, Train Acc: 96.75%
+2025-05-30 14:52:59,251 - INFO - Val Loss: 0.1675, Val Acc: 94.92%
+2025-05-30 14:56:33,830 - INFO - Epoch [64/100] (214.58s)
+2025-05-30 14:56:33,830 - INFO - Train Loss: 0.0691, Train Acc: 98.02%
+2025-05-30 14:56:33,830 - INFO - Val Loss: 0.1820, Val Acc: 94.92%
+2025-05-30 15:00:04,688 - INFO - Epoch [65/100] (210.86s)
+2025-05-30 15:00:04,688 - INFO - Train Loss: 0.0794, Train Acc: 96.47%
+2025-05-30 15:00:04,688 - INFO - Val Loss: 0.1832, Val Acc: 93.79%
+2025-05-30 15:03:36,369 - INFO - Epoch [66/100] (211.68s)
+2025-05-30 15:03:36,370 - INFO - Train Loss: 0.1153, Train Acc: 97.74%
+2025-05-30 15:03:36,370 - INFO - Val Loss: 0.1815, Val Acc: 93.79%
+2025-05-30 15:04:41,681 - INFO - Epoch [67/100] (65.30s)
+2025-05-30 15:04:41,682 - INFO - Train Loss: 0.1185, Train Acc: 97.32%
+2025-05-30 15:04:41,682 - INFO - Val Loss: 0.1734, Val Acc: 93.79%
+2025-05-30 15:08:15,134 - INFO - Epoch [68/100] (213.45s)
+2025-05-30 15:08:15,134 - INFO - Train Loss: 0.1357, Train Acc: 97.46%
+2025-05-30 15:08:15,135 - INFO - Val Loss: 0.1814, Val Acc: 94.35%
+2025-05-30 15:09:00,155 - INFO - Epoch [69/100] (45.02s)
+2025-05-30 15:09:00,155 - INFO - Train Loss: 0.0792, Train Acc: 98.31%
+2025-05-30 15:09:00,155 - INFO - Val Loss: 0.1898, Val Acc: 94.92%
+2025-05-30 15:10:22,208 - INFO - Epoch [70/100] (82.05s)
+2025-05-30 15:10:22,209 - INFO - Train Loss: 0.1068, Train Acc: 98.02%
+2025-05-30 15:10:22,209 - INFO - Val Loss: 0.1719, Val Acc: 94.92%
+2025-05-30 15:11:06,420 - INFO - Epoch [71/100] (44.21s)
+2025-05-30 15:11:06,420 - INFO - Train Loss: 0.1527, Train Acc: 95.62%
+2025-05-30 15:11:06,421 - INFO - Val Loss: 0.2695, Val Acc: 92.66%
+2025-05-30 15:11:51,041 - INFO - Epoch [72/100] (44.62s)
+2025-05-30 15:11:51,041 - INFO - Train Loss: 0.1906, Train Acc: 94.63%
+2025-05-30 15:11:51,042 - INFO - Val Loss: 0.6048, Val Acc: 84.75%
+2025-05-30 15:12:35,893 - INFO - Epoch [73/100] (44.85s)
+2025-05-30 15:12:35,893 - INFO - Train Loss: 0.2448, Train Acc: 92.51%
+2025-05-30 15:12:35,893 - INFO - Val Loss: 0.3880, Val Acc: 89.83%
+2025-05-30 15:12:35,894 - INFO - Early stopping triggered after 73 epochs
+2025-05-30 15:12:35,963 - INFO - Model training completed
+2025-05-30 15:12:35,964 - INFO - 
+Processing image: test_image.jpg
+2025-05-30 15:12:36,077 - ERROR - Error in extract_card_number: name 'four_point_transform' is not defined
+2025-05-30 15:12:36,077 - INFO - Detected card number: Error processing card: name 'four_point_transform' is not defined
+2025-05-30 15:12:44,749 - INFO - Starting model training...
+2025-05-30 15:12:45,120 - INFO - Input tensor shape: torch.Size([885, 1, 32, 32])
+2025-05-30 15:12:45,239 - INFO - Model architecture:
+AdvancedCreditCardNet(
+  (conv1): Sequential(
+    (0): Conv2d(1, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): ReLU(inplace=True)
+  )
+  (layer1): Sequential(
+    (0): ResidualBlock(
+      (conv1): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential()
+      (se): SEBlock(
+        (squeeze): AdaptiveAvgPool2d(output_size=1)
+        (excitation): Sequential(
+          (0): Linear(in_features=32, out_features=2, bias=False)
+          (1): ReLU(inplace=True)
+          (2): Linear(in_features=2, out_features=32, bias=False)
+          (3): Sigmoid()
+        )
+      )
+      (attention): AttentionBlock(
+        (query): Conv2d(32, 4, kernel_size=(1, 1), stride=(1, 1))
+        (key): Conv2d(32, 4, kernel_size=(1, 1), stride=(1, 1))
+        (value): Conv2d(32, 32, kernel_size=(1, 1), stride=(1, 1))
+      )
+      (dropout): Dropout2d(p=0.2, inplace=False)
+    )
+    (1): ResidualBlock(
+      (conv1): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential()
+      (se): SEBlock(
+        (squeeze): AdaptiveAvgPool2d(output_size=1)
+        (excitation): Sequential(
+          (0): Linear(in_features=32, out_features=2, bias=False)
+          (1): ReLU(inplace=True)
+          (2): Linear(in_features=2, out_features=32, bias=False)
+          (3): Sigmoid()
+        )
+      )
+      (attention): AttentionBlock(
+        (query): Conv2d(32, 4, kernel_size=(1, 1), stride=(1, 1))
+        (key): Conv2d(32, 4, kernel_size=(1, 1), stride=(1, 1))
+        (value): Conv2d(32, 32, kernel_size=(1, 1), stride=(1, 1))
+      )
+      (dropout): Dropout2d(p=0.2, inplace=False)
+    )
+  )
+  (layer2): Sequential(
+    (0): ResidualBlock(
+      (conv1): Conv2d(32, 64, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential(
+        (0): Conv2d(32, 64, kernel_size=(1, 1), stride=(2, 2), bias=False)
+        (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+      (se): SEBlock(
+        (squeeze): AdaptiveAvgPool2d(output_size=1)
+        (excitation): Sequential(
+          (0): Linear(in_features=64, out_features=4, bias=False)
+          (1): ReLU(inplace=True)
+          (2): Linear(in_features=4, out_features=64, bias=False)
+          (3): Sigmoid()
+        )
+      )
+      (attention): AttentionBlock(
+        (query): Conv2d(64, 8, kernel_size=(1, 1), stride=(1, 1))
+        (key): Conv2d(64, 8, kernel_size=(1, 1), stride=(1, 1))
+        (value): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+      )
+      (dropout): Dropout2d(p=0.2, inplace=False)
+    )
+    (1): ResidualBlock(
+      (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential()
+      (se): SEBlock(
+        (squeeze): AdaptiveAvgPool2d(output_size=1)
+        (excitation): Sequential(
+          (0): Linear(in_features=64, out_features=4, bias=False)
+          (1): ReLU(inplace=True)
+          (2): Linear(in_features=4, out_features=64, bias=False)
+          (3): Sigmoid()
+        )
+      )
+      (attention): AttentionBlock(
+        (query): Conv2d(64, 8, kernel_size=(1, 1), stride=(1, 1))
+        (key): Conv2d(64, 8, kernel_size=(1, 1), stride=(1, 1))
+        (value): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+      )
+      (dropout): Dropout2d(p=0.2, inplace=False)
+    )
+  )
+  (layer3): Sequential(
+    (0): ResidualBlock(
+      (conv1): Conv2d(64, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential(
+        (0): Conv2d(64, 128, kernel_size=(1, 1), stride=(2, 2), bias=False)
+        (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+      (se): SEBlock(
+        (squeeze): AdaptiveAvgPool2d(output_size=1)
+        (excitation): Sequential(
+          (0): Linear(in_features=128, out_features=8, bias=False)
+          (1): ReLU(inplace=True)
+          (2): Linear(in_features=8, out_features=128, bias=False)
+          (3): Sigmoid()
+        )
+      )
+      (attention): AttentionBlock(
+        (query): Conv2d(128, 16, kernel_size=(1, 1), stride=(1, 1))
+        (key): Conv2d(128, 16, kernel_size=(1, 1), stride=(1, 1))
+        (value): Conv2d(128, 128, kernel_size=(1, 1), stride=(1, 1))
+      )
+      (dropout): Dropout2d(p=0.2, inplace=False)
+    )
+    (1): ResidualBlock(
+      (conv1): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential()
+      (se): SEBlock(
+        (squeeze): AdaptiveAvgPool2d(output_size=1)
+        (excitation): Sequential(
+          (0): Linear(in_features=128, out_features=8, bias=False)
+          (1): ReLU(inplace=True)
+          (2): Linear(in_features=8, out_features=128, bias=False)
+          (3): Sigmoid()
+        )
+      )
+      (attention): AttentionBlock(
+        (query): Conv2d(128, 16, kernel_size=(1, 1), stride=(1, 1))
+        (key): Conv2d(128, 16, kernel_size=(1, 1), stride=(1, 1))
+        (value): Conv2d(128, 128, kernel_size=(1, 1), stride=(1, 1))
+      )
+      (dropout): Dropout2d(p=0.2, inplace=False)
+    )
+  )
+  (fpn1): FPNBlock(
+    (conv1): Conv2d(128, 64, kernel_size=(1, 1), stride=(1, 1))
+    (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (upsample): Upsample(scale_factor=2.0, mode='bilinear')
+  )
+  (fpn2): FPNBlock(
+    (conv1): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1))
+    (conv2): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (upsample): Upsample(scale_factor=2.0, mode='bilinear')
+  )
+  (classifier): Sequential(
+    (0): AdaptiveAvgPool2d(output_size=1)
+    (1): Flatten(start_dim=1, end_dim=-1)
+    (2): Linear(in_features=32, out_features=512, bias=True)
+    (3): BatchNorm1d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (4): ReLU(inplace=True)
+    (5): Dropout(p=0.3, inplace=False)
+    (6): Linear(in_features=512, out_features=10, bias=True)
+  )
+)
+2025-05-30 15:13:22,919 - INFO - Epoch [1/100] (37.68s)
+2025-05-30 15:13:22,919 - INFO - Train Loss: 2.3755, Train Acc: 12.43%
+2025-05-30 15:13:22,920 - INFO - Val Loss: 2.7189, Val Acc: 9.60%
+2025-05-30 15:15:31,418 - INFO - Epoch [2/100] (128.50s)
+2025-05-30 15:15:31,419 - INFO - Train Loss: 2.2527, Train Acc: 17.37%
+2025-05-30 15:15:31,419 - INFO - Val Loss: 2.1837, Val Acc: 25.42%
+2025-05-30 15:17:42,054 - INFO - Epoch [3/100] (130.63s)
+2025-05-30 15:17:42,055 - INFO - Train Loss: 2.1282, Train Acc: 21.33%
+2025-05-30 15:17:42,055 - INFO - Val Loss: 1.9370, Val Acc: 23.73%
+2025-05-30 15:19:54,277 - INFO - Epoch [4/100] (132.22s)
+2025-05-30 15:19:54,278 - INFO - Train Loss: 1.9211, Train Acc: 29.66%
+2025-05-30 15:19:54,281 - INFO - Val Loss: 1.8991, Val Acc: 22.60%
+2025-05-30 15:36:39,426 - INFO - Starting model training...
+2025-05-30 15:36:45,647 - INFO - Input tensor shape: torch.Size([885, 1, 32, 32])
+2025-05-30 15:36:45,666 - INFO - Model architecture:
+AdvancedCreditCardNet(
+  (conv1): Sequential(
+    (0): Conv2d(1, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): ReLU(inplace=True)
+  )
+  (layer1): Sequential(
+    (0): ResidualBlock(
+      (conv1): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential()
+      (se): SEBlock(
+        (squeeze): AdaptiveAvgPool2d(output_size=1)
+        (excitation): Sequential(
+          (0): Linear(in_features=32, out_features=2, bias=False)
+          (1): ReLU(inplace=True)
+          (2): Linear(in_features=2, out_features=32, bias=False)
+          (3): Sigmoid()
+        )
+      )
+      (attention): AttentionBlock(
+        (query): Conv2d(32, 4, kernel_size=(1, 1), stride=(1, 1))
+        (key): Conv2d(32, 4, kernel_size=(1, 1), stride=(1, 1))
+        (value): Conv2d(32, 32, kernel_size=(1, 1), stride=(1, 1))
+      )
+      (dropout): Dropout2d(p=0.2, inplace=False)
+    )
+    (1): ResidualBlock(
+      (conv1): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential()
+      (se): SEBlock(
+        (squeeze): AdaptiveAvgPool2d(output_size=1)
+        (excitation): Sequential(
+          (0): Linear(in_features=32, out_features=2, bias=False)
+          (1): ReLU(inplace=True)
+          (2): Linear(in_features=2, out_features=32, bias=False)
+          (3): Sigmoid()
+        )
+      )
+      (attention): AttentionBlock(
+        (query): Conv2d(32, 4, kernel_size=(1, 1), stride=(1, 1))
+        (key): Conv2d(32, 4, kernel_size=(1, 1), stride=(1, 1))
+        (value): Conv2d(32, 32, kernel_size=(1, 1), stride=(1, 1))
+      )
+      (dropout): Dropout2d(p=0.2, inplace=False)
+    )
+  )
+  (layer2): Sequential(
+    (0): ResidualBlock(
+      (conv1): Conv2d(32, 64, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential(
+        (0): Conv2d(32, 64, kernel_size=(1, 1), stride=(2, 2), bias=False)
+        (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+      (se): SEBlock(
+        (squeeze): AdaptiveAvgPool2d(output_size=1)
+        (excitation): Sequential(
+          (0): Linear(in_features=64, out_features=4, bias=False)
+          (1): ReLU(inplace=True)
+          (2): Linear(in_features=4, out_features=64, bias=False)
+          (3): Sigmoid()
+        )
+      )
+      (attention): AttentionBlock(
+        (query): Conv2d(64, 8, kernel_size=(1, 1), stride=(1, 1))
+        (key): Conv2d(64, 8, kernel_size=(1, 1), stride=(1, 1))
+        (value): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+      )
+      (dropout): Dropout2d(p=0.2, inplace=False)
+    )
+    (1): ResidualBlock(
+      (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential()
+      (se): SEBlock(
+        (squeeze): AdaptiveAvgPool2d(output_size=1)
+        (excitation): Sequential(
+          (0): Linear(in_features=64, out_features=4, bias=False)
+          (1): ReLU(inplace=True)
+          (2): Linear(in_features=4, out_features=64, bias=False)
+          (3): Sigmoid()
+        )
+      )
+      (attention): AttentionBlock(
+        (query): Conv2d(64, 8, kernel_size=(1, 1), stride=(1, 1))
+        (key): Conv2d(64, 8, kernel_size=(1, 1), stride=(1, 1))
+        (value): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+      )
+      (dropout): Dropout2d(p=0.2, inplace=False)
+    )
+  )
+  (layer3): Sequential(
+    (0): ResidualBlock(
+      (conv1): Conv2d(64, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential(
+        (0): Conv2d(64, 128, kernel_size=(1, 1), stride=(2, 2), bias=False)
+        (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+      (se): SEBlock(
+        (squeeze): AdaptiveAvgPool2d(output_size=1)
+        (excitation): Sequential(
+          (0): Linear(in_features=128, out_features=8, bias=False)
+          (1): ReLU(inplace=True)
+          (2): Linear(in_features=8, out_features=128, bias=False)
+          (3): Sigmoid()
+        )
+      )
+      (attention): AttentionBlock(
+        (query): Conv2d(128, 16, kernel_size=(1, 1), stride=(1, 1))
+        (key): Conv2d(128, 16, kernel_size=(1, 1), stride=(1, 1))
+        (value): Conv2d(128, 128, kernel_size=(1, 1), stride=(1, 1))
+      )
+      (dropout): Dropout2d(p=0.2, inplace=False)
+    )
+    (1): ResidualBlock(
+      (conv1): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential()
+      (se): SEBlock(
+        (squeeze): AdaptiveAvgPool2d(output_size=1)
+        (excitation): Sequential(
+          (0): Linear(in_features=128, out_features=8, bias=False)
+          (1): ReLU(inplace=True)
+          (2): Linear(in_features=8, out_features=128, bias=False)
+          (3): Sigmoid()
+        )
+      )
+      (attention): AttentionBlock(
+        (query): Conv2d(128, 16, kernel_size=(1, 1), stride=(1, 1))
+        (key): Conv2d(128, 16, kernel_size=(1, 1), stride=(1, 1))
+        (value): Conv2d(128, 128, kernel_size=(1, 1), stride=(1, 1))
+      )
+      (dropout): Dropout2d(p=0.2, inplace=False)
+    )
+  )
+  (fpn1): FPNBlock(
+    (conv1): Conv2d(128, 64, kernel_size=(1, 1), stride=(1, 1))
+    (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (upsample): Upsample(scale_factor=2.0, mode='bilinear')
+  )
+  (fpn2): FPNBlock(
+    (conv1): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1))
+    (conv2): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (upsample): Upsample(scale_factor=2.0, mode='bilinear')
+  )
+  (classifier): Sequential(
+    (0): AdaptiveAvgPool2d(output_size=1)
+    (1): Flatten(start_dim=1, end_dim=-1)
+    (2): Linear(in_features=32, out_features=512, bias=True)
+    (3): BatchNorm1d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (4): ReLU(inplace=True)
+    (5): Dropout(p=0.3, inplace=False)
+    (6): Linear(in_features=512, out_features=10, bias=True)
+  )
+)
+2025-05-30 15:37:24,068 - INFO - Epoch [1/100] (38.40s)
+2025-05-30 15:37:24,068 - INFO - Train Loss: 2.3813, Train Acc: 11.72%
+2025-05-30 15:37:24,068 - INFO - Val Loss: 2.4522, Val Acc: 13.56%
+2025-05-30 15:38:00,797 - INFO - Epoch [2/100] (36.73s)
+2025-05-30 15:38:00,798 - INFO - Train Loss: 2.3336, Train Acc: 14.12%
+2025-05-30 15:38:00,798 - INFO - Val Loss: 2.3857, Val Acc: 11.30%
+2025-05-30 15:38:38,937 - INFO - Epoch [3/100] (38.14s)
+2025-05-30 15:38:38,938 - INFO - Train Loss: 2.3053, Train Acc: 16.81%
+2025-05-30 15:38:38,938 - INFO - Val Loss: 2.1312, Val Acc: 19.77%
+2025-05-30 15:39:17,101 - INFO - Epoch [4/100] (38.16s)
+2025-05-30 15:39:17,102 - INFO - Train Loss: 2.1638, Train Acc: 20.76%
+2025-05-30 15:39:17,102 - INFO - Val Loss: 1.9625, Val Acc: 20.34%
+2025-05-30 15:39:54,730 - INFO - Epoch [5/100] (37.63s)
+2025-05-30 15:39:54,731 - INFO - Train Loss: 2.0578, Train Acc: 24.86%
+2025-05-30 15:39:54,731 - INFO - Val Loss: 2.4669, Val Acc: 16.95%
+2025-05-30 15:40:31,755 - INFO - Epoch [6/100] (37.02s)
+2025-05-30 15:40:31,755 - INFO - Train Loss: 1.9463, Train Acc: 28.81%
+2025-05-30 15:40:31,755 - INFO - Val Loss: 1.8003, Val Acc: 29.38%
+2025-05-30 15:41:09,856 - INFO - Epoch [7/100] (38.10s)
+2025-05-30 15:41:09,856 - INFO - Train Loss: 1.8458, Train Acc: 31.21%
+2025-05-30 15:41:09,856 - INFO - Val Loss: 1.6456, Val Acc: 31.64%
+2025-05-30 15:41:49,941 - INFO - Epoch [8/100] (40.08s)
+2025-05-30 15:41:49,942 - INFO - Train Loss: 1.7230, Train Acc: 33.47%
+2025-05-30 15:41:49,942 - INFO - Val Loss: 1.5239, Val Acc: 47.46%
+2025-05-30 16:36:35,020 - INFO - Epoch [9/100] (3285.08s)
+2025-05-30 16:36:35,020 - INFO - Train Loss: 1.6137, Train Acc: 41.53%
+2025-05-30 16:36:35,020 - INFO - Val Loss: 1.5066, Val Acc: 46.89%
+2025-05-30 16:39:06,327 - INFO - Epoch [10/100] (151.31s)
+2025-05-30 16:39:06,327 - INFO - Train Loss: 1.5868, Train Acc: 41.53%
+2025-05-30 16:39:06,328 - INFO - Val Loss: 1.4309, Val Acc: 51.41%
+2025-05-30 16:41:23,464 - INFO - Epoch [11/100] (137.14s)
+2025-05-30 16:41:23,465 - INFO - Train Loss: 1.5943, Train Acc: 41.24%
+2025-05-30 16:41:23,465 - INFO - Val Loss: 1.2386, Val Acc: 56.50%
+2025-05-30 16:46:35,169 - INFO - Epoch [12/100] (311.70s)
+2025-05-30 16:46:35,169 - INFO - Train Loss: 1.2975, Train Acc: 53.95%
+2025-05-30 16:46:35,170 - INFO - Val Loss: 1.5783, Val Acc: 45.76%
+2025-05-30 16:48:58,776 - INFO - Epoch [13/100] (143.61s)
+2025-05-30 16:48:58,777 - INFO - Train Loss: 1.2161, Train Acc: 57.20%
+2025-05-30 16:48:58,777 - INFO - Val Loss: 1.5032, Val Acc: 50.28%
+2025-05-30 16:51:12,607 - INFO - Epoch [14/100] (133.83s)
+2025-05-30 16:51:12,607 - INFO - Train Loss: 1.1084, Train Acc: 61.58%
+2025-05-30 16:51:12,608 - INFO - Val Loss: 0.8969, Val Acc: 61.58%
+2025-05-30 16:53:49,486 - INFO - Epoch [15/100] (156.88s)
+2025-05-30 16:53:49,487 - INFO - Train Loss: 1.0654, Train Acc: 67.51%
+2025-05-30 16:53:49,487 - INFO - Val Loss: 1.5064, Val Acc: 49.15%
+2025-05-30 16:56:15,180 - INFO - Epoch [16/100] (145.69s)
+2025-05-30 16:56:15,180 - INFO - Train Loss: 0.9555, Train Acc: 65.96%
+2025-05-30 16:56:15,180 - INFO - Val Loss: 1.2360, Val Acc: 53.11%
+2025-05-30 16:58:06,809 - INFO - Epoch [17/100] (111.63s)
+2025-05-30 16:58:06,810 - INFO - Train Loss: 0.8924, Train Acc: 69.49%
+2025-05-30 16:58:06,810 - INFO - Val Loss: 0.8618, Val Acc: 62.71%
+2025-05-30 17:00:24,630 - INFO - Epoch [18/100] (137.82s)
+2025-05-30 17:00:24,631 - INFO - Train Loss: 0.8314, Train Acc: 72.46%
+2025-05-30 17:00:24,631 - INFO - Val Loss: 0.7319, Val Acc: 72.88%
+2025-05-30 17:02:48,793 - INFO - Epoch [19/100] (144.16s)
+2025-05-30 17:02:48,794 - INFO - Train Loss: 0.8172, Train Acc: 78.11%
+2025-05-30 17:02:48,794 - INFO - Val Loss: 0.7208, Val Acc: 77.97%
+2025-05-30 17:05:14,606 - INFO - Epoch [20/100] (145.81s)
+2025-05-30 17:05:14,606 - INFO - Train Loss: 0.7143, Train Acc: 78.39%
+2025-05-30 17:05:14,606 - INFO - Val Loss: 0.6723, Val Acc: 77.40%
+2025-05-30 17:07:33,337 - INFO - Epoch [21/100] (138.73s)
+2025-05-30 17:07:33,337 - INFO - Train Loss: 0.6278, Train Acc: 80.65%
+2025-05-30 17:07:33,338 - INFO - Val Loss: 0.5798, Val Acc: 77.40%
+2025-05-30 17:09:03,355 - INFO - Epoch [22/100] (90.02s)
+2025-05-30 17:09:03,355 - INFO - Train Loss: 0.5890, Train Acc: 81.50%
+2025-05-30 17:09:03,355 - INFO - Val Loss: 0.5240, Val Acc: 81.36%
+2025-05-30 17:09:54,961 - INFO - Epoch [23/100] (51.61s)
+2025-05-30 17:09:54,962 - INFO - Train Loss: 0.4978, Train Acc: 84.60%
+2025-05-30 17:09:54,962 - INFO - Val Loss: 0.4588, Val Acc: 83.05%
+2025-05-30 17:12:17,423 - INFO - Epoch [24/100] (142.46s)
+2025-05-30 17:12:17,424 - INFO - Train Loss: 0.4552, Train Acc: 87.99%
+2025-05-30 17:12:17,424 - INFO - Val Loss: 0.3760, Val Acc: 88.14%
+2025-05-30 17:14:42,553 - INFO - Epoch [25/100] (145.13s)
+2025-05-30 17:14:42,553 - INFO - Train Loss: 0.4760, Train Acc: 87.01%
+2025-05-30 17:14:42,553 - INFO - Val Loss: 0.3754, Val Acc: 86.44%
+2025-05-30 17:17:06,344 - INFO - Epoch [26/100] (143.79s)
+2025-05-30 17:17:06,345 - INFO - Train Loss: 0.3751, Train Acc: 89.83%
+2025-05-30 17:17:06,345 - INFO - Val Loss: 0.2855, Val Acc: 93.22%
+2025-05-30 17:19:32,084 - INFO - Epoch [27/100] (145.74s)
+2025-05-30 17:19:32,084 - INFO - Train Loss: 0.3828, Train Acc: 89.55%
+2025-05-30 17:19:32,084 - INFO - Val Loss: 0.3428, Val Acc: 89.83%
+2025-05-30 17:22:05,722 - INFO - Epoch [28/100] (153.64s)
+2025-05-30 17:22:05,723 - INFO - Train Loss: 0.3499, Train Acc: 89.27%
+2025-05-30 17:22:05,724 - INFO - Val Loss: 0.3226, Val Acc: 90.40%
+2025-05-30 17:24:26,480 - INFO - Epoch [29/100] (140.76s)
+2025-05-30 17:24:26,480 - INFO - Train Loss: 0.3968, Train Acc: 89.97%
+2025-05-30 17:24:26,481 - INFO - Val Loss: 0.3088, Val Acc: 91.53%
+2025-05-30 17:26:58,590 - INFO - Epoch [30/100] (152.11s)
+2025-05-30 17:26:58,590 - INFO - Train Loss: 0.3957, Train Acc: 90.40%
+2025-05-30 17:26:58,591 - INFO - Val Loss: 0.3161, Val Acc: 90.96%
+2025-05-30 17:29:24,901 - INFO - Epoch [31/100] (146.31s)
+2025-05-30 17:29:24,902 - INFO - Train Loss: 0.5059, Train Acc: 84.89%
+2025-05-30 17:29:24,902 - INFO - Val Loss: 0.4133, Val Acc: 87.57%
+2025-05-30 17:31:53,740 - INFO - Epoch [32/100] (148.84s)
+2025-05-30 17:31:53,740 - INFO - Train Loss: 0.5257, Train Acc: 84.46%
+2025-05-30 17:31:53,741 - INFO - Val Loss: 0.4663, Val Acc: 87.57%
+2025-05-30 17:34:19,526 - INFO - Epoch [33/100] (145.78s)
+2025-05-30 17:34:19,526 - INFO - Train Loss: 0.6725, Train Acc: 80.93%
+2025-05-30 17:34:19,526 - INFO - Val Loss: 0.4591, Val Acc: 87.01%
+2025-05-30 17:36:50,685 - INFO - Epoch [34/100] (151.16s)
+2025-05-30 17:36:50,685 - INFO - Train Loss: 0.5195, Train Acc: 84.46%
+2025-05-30 17:36:50,686 - INFO - Val Loss: 0.5122, Val Acc: 88.14%
+2025-05-30 17:39:24,310 - INFO - Epoch [35/100] (153.62s)
+2025-05-30 17:39:24,310 - INFO - Train Loss: 0.5010, Train Acc: 82.91%
+2025-05-30 17:39:24,310 - INFO - Val Loss: 0.5113, Val Acc: 83.62%
+2025-05-30 17:41:34,365 - INFO - Epoch [36/100] (130.05s)
+2025-05-30 17:41:34,365 - INFO - Train Loss: 0.5273, Train Acc: 85.31%
+2025-05-30 17:41:34,365 - INFO - Val Loss: 0.4854, Val Acc: 85.31%
+2025-05-30 17:42:14,298 - INFO - Epoch [37/100] (39.93s)
+2025-05-30 17:42:14,298 - INFO - Train Loss: 0.4290, Train Acc: 87.57%
+2025-05-30 17:42:14,298 - INFO - Val Loss: 0.4799, Val Acc: 83.62%
+2025-05-30 17:44:10,818 - INFO - Epoch [38/100] (116.52s)
+2025-05-30 17:44:10,818 - INFO - Train Loss: 0.4414, Train Acc: 87.43%
+2025-05-30 17:44:10,818 - INFO - Val Loss: 0.3113, Val Acc: 92.09%
+2025-05-30 17:47:12,843 - INFO - Epoch [39/100] (182.02s)
+2025-05-30 17:47:12,843 - INFO - Train Loss: 0.4439, Train Acc: 86.72%
+2025-05-30 17:47:12,843 - INFO - Val Loss: 0.3413, Val Acc: 88.14%
+2025-05-30 17:53:19,370 - INFO - Epoch [40/100] (366.53s)
+2025-05-30 17:53:19,371 - INFO - Train Loss: 0.3547, Train Acc: 88.98%
+2025-05-30 17:53:19,371 - INFO - Val Loss: 0.4210, Val Acc: 87.57%
+2025-05-30 17:55:38,966 - INFO - Epoch [41/100] (139.59s)
+2025-05-30 17:55:38,966 - INFO - Train Loss: 0.3572, Train Acc: 88.84%
+2025-05-30 17:55:38,966 - INFO - Val Loss: 0.3343, Val Acc: 90.40%
+2025-05-30 17:56:19,995 - INFO - Epoch [42/100] (41.03s)
+2025-05-30 17:56:19,995 - INFO - Train Loss: 0.3362, Train Acc: 89.69%
+2025-05-30 17:56:19,995 - INFO - Val Loss: 0.3544, Val Acc: 89.27%
+2025-05-30 17:57:01,499 - INFO - Epoch [43/100] (41.50s)
+2025-05-30 17:57:01,500 - INFO - Train Loss: 0.3752, Train Acc: 87.71%
+2025-05-30 17:57:01,500 - INFO - Val Loss: 0.2931, Val Acc: 89.83%
+2025-05-30 17:57:42,666 - INFO - Epoch [44/100] (41.17s)
+2025-05-30 17:57:42,666 - INFO - Train Loss: 0.3228, Train Acc: 90.68%
+2025-05-30 17:57:42,666 - INFO - Val Loss: 0.2623, Val Acc: 92.66%
+2025-05-30 17:58:24,778 - INFO - Epoch [45/100] (42.11s)
+2025-05-30 17:58:24,778 - INFO - Train Loss: 0.3140, Train Acc: 90.40%
+2025-05-30 17:58:24,779 - INFO - Val Loss: 0.2459, Val Acc: 93.22%
+2025-05-30 17:59:07,080 - INFO - Epoch [46/100] (42.30s)
+2025-05-30 17:59:07,080 - INFO - Train Loss: 0.3765, Train Acc: 91.67%
+2025-05-30 17:59:07,080 - INFO - Val Loss: 0.3074, Val Acc: 90.40%
+2025-05-30 17:59:48,196 - INFO - Epoch [47/100] (41.12s)
+2025-05-30 17:59:48,197 - INFO - Train Loss: 0.3265, Train Acc: 92.94%
+2025-05-30 17:59:48,197 - INFO - Val Loss: 0.2252, Val Acc: 93.22%
+2025-05-30 18:00:30,558 - INFO - Epoch [48/100] (42.36s)
+2025-05-30 18:00:30,558 - INFO - Train Loss: 0.2598, Train Acc: 90.96%
+2025-05-30 18:00:30,558 - INFO - Val Loss: 0.2497, Val Acc: 93.22%
+2025-05-30 18:01:12,684 - INFO - Epoch [49/100] (42.13s)
+2025-05-30 18:01:12,684 - INFO - Train Loss: 0.2663, Train Acc: 93.50%
+2025-05-30 18:01:12,685 - INFO - Val Loss: 0.2681, Val Acc: 93.22%
+2025-05-30 18:01:55,282 - INFO - Epoch [50/100] (42.60s)
+2025-05-30 18:01:55,282 - INFO - Train Loss: 0.3166, Train Acc: 91.10%
+2025-05-30 18:01:55,282 - INFO - Val Loss: 0.1874, Val Acc: 94.35%
+2025-05-30 18:02:37,071 - INFO - Epoch [51/100] (41.79s)
+2025-05-30 18:02:37,071 - INFO - Train Loss: 0.2189, Train Acc: 92.80%
+2025-05-30 18:02:37,072 - INFO - Val Loss: 0.1559, Val Acc: 96.05%
+2025-05-30 18:03:18,795 - INFO - Epoch [52/100] (41.72s)
+2025-05-30 18:03:18,796 - INFO - Train Loss: 0.1577, Train Acc: 94.77%
+2025-05-30 18:03:18,796 - INFO - Val Loss: 0.2232, Val Acc: 95.48%
+2025-05-30 18:04:00,772 - INFO - Epoch [53/100] (41.98s)
+2025-05-30 18:04:00,772 - INFO - Train Loss: 0.1851, Train Acc: 94.07%
+2025-05-30 18:04:00,772 - INFO - Val Loss: 0.2466, Val Acc: 93.79%
+2025-05-30 18:04:42,144 - INFO - Epoch [54/100] (41.37s)
+2025-05-30 18:04:42,144 - INFO - Train Loss: 0.1979, Train Acc: 95.34%
+2025-05-30 18:04:42,144 - INFO - Val Loss: 0.1653, Val Acc: 95.48%
+2025-05-30 18:05:25,446 - INFO - Epoch [55/100] (43.30s)
+2025-05-30 18:05:25,446 - INFO - Train Loss: 0.2170, Train Acc: 94.07%
+2025-05-30 18:05:25,446 - INFO - Val Loss: 0.1871, Val Acc: 95.48%
+2025-05-30 18:06:08,966 - INFO - Epoch [56/100] (43.52s)
+2025-05-30 18:06:08,966 - INFO - Train Loss: 0.2331, Train Acc: 95.34%
+2025-05-30 18:06:08,967 - INFO - Val Loss: 0.1818, Val Acc: 95.48%
+2025-05-30 18:06:51,807 - INFO - Epoch [57/100] (42.84s)
+2025-05-30 18:06:51,807 - INFO - Train Loss: 0.1903, Train Acc: 95.20%
+2025-05-30 18:06:51,808 - INFO - Val Loss: 0.1823, Val Acc: 95.48%
+2025-05-30 18:07:35,306 - INFO - Epoch [58/100] (43.50s)
+2025-05-30 18:07:35,306 - INFO - Train Loss: 0.2925, Train Acc: 95.76%
+2025-05-30 18:07:35,306 - INFO - Val Loss: 0.2448, Val Acc: 93.79%
+2025-05-30 18:08:18,685 - INFO - Epoch [59/100] (43.38s)
+2025-05-30 18:08:18,685 - INFO - Train Loss: 0.1508, Train Acc: 94.49%
+2025-05-30 18:08:18,686 - INFO - Val Loss: 0.1639, Val Acc: 96.05%
+2025-05-30 18:09:01,463 - INFO - Epoch [60/100] (42.78s)
+2025-05-30 18:09:01,463 - INFO - Train Loss: 0.2046, Train Acc: 95.76%
+2025-05-30 18:09:01,464 - INFO - Val Loss: 0.1446, Val Acc: 96.05%
+2025-05-30 18:09:43,889 - INFO - Epoch [61/100] (42.42s)
+2025-05-30 18:09:43,889 - INFO - Train Loss: 0.1023, Train Acc: 97.46%
+2025-05-30 18:09:43,889 - INFO - Val Loss: 0.1207, Val Acc: 97.18%
+2025-05-30 18:10:25,822 - INFO - Epoch [62/100] (41.93s)
+2025-05-30 18:10:25,822 - INFO - Train Loss: 0.1096, Train Acc: 96.61%
+2025-05-30 18:10:25,822 - INFO - Val Loss: 0.1276, Val Acc: 95.48%
+2025-05-30 18:11:08,136 - INFO - Epoch [63/100] (42.31s)
+2025-05-30 18:11:08,137 - INFO - Train Loss: 0.1140, Train Acc: 96.33%
+2025-05-30 18:11:08,137 - INFO - Val Loss: 0.1191, Val Acc: 96.61%
+2025-05-30 18:11:51,646 - INFO - Epoch [64/100] (43.51s)
+2025-05-30 18:11:51,646 - INFO - Train Loss: 0.1356, Train Acc: 97.18%
+2025-05-30 18:11:51,647 - INFO - Val Loss: 0.1433, Val Acc: 96.05%
+2025-05-30 18:12:34,896 - INFO - Epoch [65/100] (43.25s)
+2025-05-30 18:12:34,896 - INFO - Train Loss: 0.1212, Train Acc: 95.90%
+2025-05-30 18:12:34,896 - INFO - Val Loss: 0.1572, Val Acc: 95.48%
+2025-05-30 18:13:17,323 - INFO - Epoch [66/100] (42.43s)
+2025-05-30 18:13:17,323 - INFO - Train Loss: 0.0831, Train Acc: 97.03%
+2025-05-30 18:13:17,323 - INFO - Val Loss: 0.1516, Val Acc: 96.05%
+2025-05-30 18:13:59,700 - INFO - Epoch [67/100] (42.38s)
+2025-05-30 18:13:59,700 - INFO - Train Loss: 0.1656, Train Acc: 96.75%
+2025-05-30 18:13:59,700 - INFO - Val Loss: 0.1437, Val Acc: 95.48%
+2025-05-30 18:14:42,973 - INFO - Epoch [68/100] (43.27s)
+2025-05-30 18:14:42,974 - INFO - Train Loss: 0.1070, Train Acc: 96.61%
+2025-05-30 18:14:42,974 - INFO - Val Loss: 0.1500, Val Acc: 95.48%
+2025-05-30 18:15:26,341 - INFO - Epoch [69/100] (43.37s)
+2025-05-30 18:15:26,341 - INFO - Train Loss: 0.1011, Train Acc: 97.03%
+2025-05-30 18:15:26,341 - INFO - Val Loss: 0.1479, Val Acc: 95.48%
+2025-05-30 18:16:08,913 - INFO - Epoch [70/100] (42.57s)
+2025-05-30 18:16:08,914 - INFO - Train Loss: 0.0879, Train Acc: 97.46%
+2025-05-30 18:16:08,914 - INFO - Val Loss: 0.1479, Val Acc: 95.48%
+2025-05-30 18:16:51,581 - INFO - Epoch [71/100] (42.67s)
+2025-05-30 18:16:51,581 - INFO - Train Loss: 0.1644, Train Acc: 94.63%
+2025-05-30 18:16:51,581 - INFO - Val Loss: 0.1862, Val Acc: 93.79%
+2025-05-30 18:17:33,465 - INFO - Epoch [72/100] (41.88s)
+2025-05-30 18:17:33,466 - INFO - Train Loss: 0.2448, Train Acc: 92.94%
+2025-05-30 18:17:33,466 - INFO - Val Loss: 0.3875, Val Acc: 88.14%
+2025-05-30 18:18:16,026 - INFO - Epoch [73/100] (42.56s)
+2025-05-30 18:18:16,026 - INFO - Train Loss: 0.2321, Train Acc: 92.09%
+2025-05-30 18:18:16,026 - INFO - Val Loss: 0.2700, Val Acc: 90.96%
+2025-05-30 18:18:56,614 - INFO - Epoch [74/100] (40.59s)
+2025-05-30 18:18:56,614 - INFO - Train Loss: 0.4651, Train Acc: 88.56%
+2025-05-30 18:18:56,614 - INFO - Val Loss: 0.3662, Val Acc: 90.96%
+2025-05-30 18:19:37,427 - INFO - Epoch [75/100] (40.81s)
+2025-05-30 18:19:37,427 - INFO - Train Loss: 0.3339, Train Acc: 90.96%
+2025-05-30 18:19:37,427 - INFO - Val Loss: 0.2717, Val Acc: 93.79%
+2025-05-30 18:20:19,421 - INFO - Epoch [76/100] (41.99s)
+2025-05-30 18:20:19,421 - INFO - Train Loss: 0.3792, Train Acc: 90.11%
+2025-05-30 18:20:19,421 - INFO - Val Loss: 0.2435, Val Acc: 92.66%
+2025-05-30 18:21:01,022 - INFO - Epoch [77/100] (41.60s)
+2025-05-30 18:21:01,022 - INFO - Train Loss: 0.4001, Train Acc: 90.68%
+2025-05-30 18:21:01,022 - INFO - Val Loss: 0.2936, Val Acc: 90.96%
+2025-05-30 18:21:43,358 - INFO - Epoch [78/100] (42.34s)
+2025-05-30 18:21:43,358 - INFO - Train Loss: 0.3911, Train Acc: 92.23%
+2025-05-30 18:21:43,359 - INFO - Val Loss: 0.2233, Val Acc: 93.22%
+2025-05-30 18:22:25,588 - INFO - Epoch [79/100] (42.23s)
+2025-05-30 18:22:25,588 - INFO - Train Loss: 0.2513, Train Acc: 93.08%
+2025-05-30 18:22:25,588 - INFO - Val Loss: 0.3442, Val Acc: 90.40%
+2025-05-30 18:23:07,824 - INFO - Epoch [80/100] (42.24s)
+2025-05-30 18:23:07,824 - INFO - Train Loss: 0.2431, Train Acc: 91.67%
+2025-05-30 18:23:07,824 - INFO - Val Loss: 0.5215, Val Acc: 84.18%
+2025-05-30 18:23:50,837 - INFO - Epoch [81/100] (43.01s)
+2025-05-30 18:23:50,837 - INFO - Train Loss: 0.2686, Train Acc: 90.96%
+2025-05-30 18:23:50,838 - INFO - Val Loss: 0.1949, Val Acc: 93.79%
+2025-05-30 18:23:50,838 - INFO - Early stopping triggered after 81 epochs
+2025-05-30 18:23:50,916 - INFO - Model training completed
+2025-05-30 18:23:50,917 - INFO - 
+Processing image: test_image.jpg
+2025-05-30 18:23:51,093 - WARNING - Found 9 digits instead of 16
+2025-05-30 18:23:51,291 - INFO - Detected card number: 7777 7777 7xxx xxxx
+2025-05-31 12:25:30,799 - INFO - Starting model training...
+2025-05-31 12:25:37,890 - INFO - Input tensor shape: torch.Size([885, 1, 32, 32])
+2025-05-31 12:25:37,929 - INFO - Model architecture:
+AdvancedCreditCardNet(
+  (conv1): Sequential(
+    (0): Conv2d(1, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): ReLU(inplace=True)
+  )
+  (layer1): Sequential(
+    (0): ResidualBlock(
+      (conv1): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential()
+      (se): SEBlock(
+        (squeeze): AdaptiveAvgPool2d(output_size=1)
+        (excitation): Sequential(
+          (0): Linear(in_features=32, out_features=2, bias=False)
+          (1): ReLU(inplace=True)
+          (2): Linear(in_features=2, out_features=32, bias=False)
+          (3): Sigmoid()
+        )
+      )
+      (attention): AttentionBlock(
+        (query): Conv2d(32, 4, kernel_size=(1, 1), stride=(1, 1))
+        (key): Conv2d(32, 4, kernel_size=(1, 1), stride=(1, 1))
+        (value): Conv2d(32, 32, kernel_size=(1, 1), stride=(1, 1))
+      )
+      (dropout): Dropout2d(p=0.2, inplace=False)
+    )
+    (1): ResidualBlock(
+      (conv1): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential()
+      (se): SEBlock(
+        (squeeze): AdaptiveAvgPool2d(output_size=1)
+        (excitation): Sequential(
+          (0): Linear(in_features=32, out_features=2, bias=False)
+          (1): ReLU(inplace=True)
+          (2): Linear(in_features=2, out_features=32, bias=False)
+          (3): Sigmoid()
+        )
+      )
+      (attention): AttentionBlock(
+        (query): Conv2d(32, 4, kernel_size=(1, 1), stride=(1, 1))
+        (key): Conv2d(32, 4, kernel_size=(1, 1), stride=(1, 1))
+        (value): Conv2d(32, 32, kernel_size=(1, 1), stride=(1, 1))
+      )
+      (dropout): Dropout2d(p=0.2, inplace=False)
+    )
+  )
+  (layer2): Sequential(
+    (0): ResidualBlock(
+      (conv1): Conv2d(32, 64, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential(
+        (0): Conv2d(32, 64, kernel_size=(1, 1), stride=(2, 2), bias=False)
+        (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+      (se): SEBlock(
+        (squeeze): AdaptiveAvgPool2d(output_size=1)
+        (excitation): Sequential(
+          (0): Linear(in_features=64, out_features=4, bias=False)
+          (1): ReLU(inplace=True)
+          (2): Linear(in_features=4, out_features=64, bias=False)
+          (3): Sigmoid()
+        )
+      )
+      (attention): AttentionBlock(
+        (query): Conv2d(64, 8, kernel_size=(1, 1), stride=(1, 1))
+        (key): Conv2d(64, 8, kernel_size=(1, 1), stride=(1, 1))
+        (value): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+      )
+      (dropout): Dropout2d(p=0.2, inplace=False)
+    )
+    (1): ResidualBlock(
+      (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential()
+      (se): SEBlock(
+        (squeeze): AdaptiveAvgPool2d(output_size=1)
+        (excitation): Sequential(
+          (0): Linear(in_features=64, out_features=4, bias=False)
+          (1): ReLU(inplace=True)
+          (2): Linear(in_features=4, out_features=64, bias=False)
+          (3): Sigmoid()
+        )
+      )
+      (attention): AttentionBlock(
+        (query): Conv2d(64, 8, kernel_size=(1, 1), stride=(1, 1))
+        (key): Conv2d(64, 8, kernel_size=(1, 1), stride=(1, 1))
+        (value): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+      )
+      (dropout): Dropout2d(p=0.2, inplace=False)
+    )
+  )
+  (layer3): Sequential(
+    (0): ResidualBlock(
+      (conv1): Conv2d(64, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential(
+        (0): Conv2d(64, 128, kernel_size=(1, 1), stride=(2, 2), bias=False)
+        (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+      (se): SEBlock(
+        (squeeze): AdaptiveAvgPool2d(output_size=1)
+        (excitation): Sequential(
+          (0): Linear(in_features=128, out_features=8, bias=False)
+          (1): ReLU(inplace=True)
+          (2): Linear(in_features=8, out_features=128, bias=False)
+          (3): Sigmoid()
+        )
+      )
+      (attention): AttentionBlock(
+        (query): Conv2d(128, 16, kernel_size=(1, 1), stride=(1, 1))
+        (key): Conv2d(128, 16, kernel_size=(1, 1), stride=(1, 1))
+        (value): Conv2d(128, 128, kernel_size=(1, 1), stride=(1, 1))
+      )
+      (dropout): Dropout2d(p=0.2, inplace=False)
+    )
+    (1): ResidualBlock(
+      (conv1): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential()
+      (se): SEBlock(
+        (squeeze): AdaptiveAvgPool2d(output_size=1)
+        (excitation): Sequential(
+          (0): Linear(in_features=128, out_features=8, bias=False)
+          (1): ReLU(inplace=True)
+          (2): Linear(in_features=8, out_features=128, bias=False)
+          (3): Sigmoid()
+        )
+      )
+      (attention): AttentionBlock(
+        (query): Conv2d(128, 16, kernel_size=(1, 1), stride=(1, 1))
+        (key): Conv2d(128, 16, kernel_size=(1, 1), stride=(1, 1))
+        (value): Conv2d(128, 128, kernel_size=(1, 1), stride=(1, 1))
+      )
+      (dropout): Dropout2d(p=0.2, inplace=False)
+    )
+  )
+  (fpn1): FPNBlock(
+    (conv1): Conv2d(128, 64, kernel_size=(1, 1), stride=(1, 1))
+    (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (upsample): Upsample(scale_factor=2.0, mode='bilinear')
+  )
+  (fpn2): FPNBlock(
+    (conv1): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1))
+    (conv2): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (upsample): Upsample(scale_factor=2.0, mode='bilinear')
+  )
+  (classifier): Sequential(
+    (0): AdaptiveAvgPool2d(output_size=1)
+    (1): Flatten(start_dim=1, end_dim=-1)
+    (2): Linear(in_features=32, out_features=512, bias=True)
+    (3): BatchNorm1d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (4): ReLU(inplace=True)
+    (5): Dropout(p=0.3, inplace=False)
+    (6): Linear(in_features=512, out_features=10, bias=True)
+  )
+)
+2025-05-31 12:26:19,064 - INFO - Loading pre-trained model...
+2025-05-31 12:26:19,170 - ERROR - Error in main: Error(s) in loading state_dict for AdvancedCreditCardNet:
+	Missing key(s) in state_dict: "conv1.0.weight", "conv1.0.bias", "conv1.1.weight", "conv1.1.bias", "conv1.1.running_mean", "conv1.1.running_var", "layer1.0.conv1.weight", "layer1.0.bn1.weight", "layer1.0.bn1.bias", "layer1.0.bn1.running_mean", "layer1.0.bn1.running_var", "layer1.0.conv2.weight", "layer1.0.bn2.weight", "layer1.0.bn2.bias", "layer1.0.bn2.running_mean", "layer1.0.bn2.running_var", "layer1.0.se.excitation.0.weight", "layer1.0.se.excitation.2.weight", "layer1.0.attention.gamma", "layer1.0.attention.query.weight", "layer1.0.attention.query.bias", "layer1.0.attention.key.weight", "layer1.0.attention.key.bias", "layer1.0.attention.value.weight", "layer1.0.attention.value.bias", "layer1.1.conv1.weight", "layer1.1.bn1.weight", "layer1.1.bn1.bias", "layer1.1.bn1.running_mean", "layer1.1.bn1.running_var", "layer1.1.conv2.weight", "layer1.1.bn2.weight", "layer1.1.bn2.bias", "layer1.1.bn2.running_mean", "layer1.1.bn2.running_var", "layer1.1.se.excitation.0.weight", "layer1.1.se.excitation.2.weight", "layer1.1.attention.gamma", "layer1.1.attention.query.weight", "layer1.1.attention.query.bias", "layer1.1.attention.key.weight", "layer1.1.attention.key.bias", "layer1.1.attention.value.weight", "layer1.1.attention.value.bias", "layer2.0.conv1.weight", "layer2.0.bn1.weight", "layer2.0.bn1.bias", "layer2.0.bn1.running_mean", "layer2.0.bn1.running_var", "layer2.0.conv2.weight", "layer2.0.bn2.weight", "layer2.0.bn2.bias", "layer2.0.bn2.running_mean", "layer2.0.bn2.running_var", "layer2.0.shortcut.0.weight", "layer2.0.shortcut.1.weight", "layer2.0.shortcut.1.bias", "layer2.0.shortcut.1.running_mean", "layer2.0.shortcut.1.running_var", "layer2.0.se.excitation.0.weight", "layer2.0.se.excitation.2.weight", "layer2.0.attention.gamma", "layer2.0.attention.query.weight", "layer2.0.attention.query.bias", "layer2.0.attention.key.weight", "layer2.0.attention.key.bias", "layer2.0.attention.value.weight", "layer2.0.attention.value.bias", "layer2.1.conv1.weight", "layer2.1.bn1.weight", "layer2.1.bn1.bias", "layer2.1.bn1.running_mean", "layer2.1.bn1.running_var", "layer2.1.conv2.weight", "layer2.1.bn2.weight", "layer2.1.bn2.bias", "layer2.1.bn2.running_mean", "layer2.1.bn2.running_var", "layer2.1.se.excitation.0.weight", "layer2.1.se.excitation.2.weight", "layer2.1.attention.gamma", "layer2.1.attention.query.weight", "layer2.1.attention.query.bias", "layer2.1.attention.key.weight", "layer2.1.attention.key.bias", "layer2.1.attention.value.weight", "layer2.1.attention.value.bias", "layer3.0.conv1.weight", "layer3.0.bn1.weight", "layer3.0.bn1.bias", "layer3.0.bn1.running_mean", "layer3.0.bn1.running_var", "layer3.0.conv2.weight", "layer3.0.bn2.weight", "layer3.0.bn2.bias", "layer3.0.bn2.running_mean", "layer3.0.bn2.running_var", "layer3.0.shortcut.0.weight", "layer3.0.shortcut.1.weight", "layer3.0.shortcut.1.bias", "layer3.0.shortcut.1.running_mean", "layer3.0.shortcut.1.running_var", "layer3.0.se.excitation.0.weight", "layer3.0.se.excitation.2.weight", "layer3.0.attention.gamma", "layer3.0.attention.query.weight", "layer3.0.attention.query.bias", "layer3.0.attention.key.weight", "layer3.0.attention.key.bias", "layer3.0.attention.value.weight", "layer3.0.attention.value.bias", "layer3.1.conv1.weight", "layer3.1.bn1.weight", "layer3.1.bn1.bias", "layer3.1.bn1.running_mean", "layer3.1.bn1.running_var", "layer3.1.conv2.weight", "layer3.1.bn2.weight", "layer3.1.bn2.bias", "layer3.1.bn2.running_mean", "layer3.1.bn2.running_var", "layer3.1.se.excitation.0.weight", "layer3.1.se.excitation.2.weight", "layer3.1.attention.gamma", "layer3.1.attention.query.weight", "layer3.1.attention.query.bias", "layer3.1.attention.key.weight", "layer3.1.attention.key.bias", "layer3.1.attention.value.weight", "layer3.1.attention.value.bias", "fpn1.conv1.weight", "fpn1.conv1.bias", "fpn1.conv2.weight", "fpn1.conv2.bias", "fpn2.conv1.weight", "fpn2.conv1.bias", "fpn2.conv2.weight", "fpn2.conv2.bias", "classifier.2.weight", "classifier.2.bias", "classifier.3.weight", "classifier.3.bias", "classifier.3.running_mean", "classifier.3.running_var", "classifier.6.weight", "classifier.6.bias". 
+	Unexpected key(s) in state_dict: "epoch", "model_state_dict", "optimizer_state_dict", "val_accuracy". 
+2025-05-31 12:27:23,353 - INFO - Loading pre-trained model...
+2025-05-31 12:27:23,431 - INFO - Model loaded successfully
+2025-05-31 12:27:23,432 - INFO - 
+Processing image: test_image.jpg
+2025-05-31 12:27:23,604 - WARNING - Found 14 digits instead of 16
+2025-05-31 12:27:23,928 - INFO - Detected card number: 7777 7777 7777 77xx
+2025-05-31 12:29:31,251 - INFO - Loading pre-trained model...
+2025-05-31 12:29:31,322 - INFO - Model loaded successfully
+2025-05-31 12:29:31,323 - INFO - 
+Processing image: test_image.jpg
+2025-05-31 12:29:31,444 - WARNING - Found 14 digits instead of 16
+2025-05-31 12:29:31,668 - INFO - Detected card number: 7777 7777 7777 77xx
+2025-05-31 12:29:31,669 - INFO - 
+Processing image: test_photo.jpg
+2025-05-31 12:29:31,865 - WARNING - Found 31 digits instead of 16
+2025-05-31 12:29:32,396 - WARNING - Found 18 digits instead of 16
+2025-05-31 12:29:32,671 - INFO - Detected card number: 7777 7777 7777 7777
+2025-05-31 12:31:09,434 - INFO - Loading pre-trained model...
+2025-05-31 12:31:09,502 - INFO - Model loaded successfully
+2025-05-31 12:31:09,503 - INFO - 
+Processing image: test_image.jpg
+2025-05-31 12:31:09,632 - WARNING - Found 14 digits instead of 16
+2025-05-31 12:31:09,952 - INFO - Detected card number: 7777 7777 7777 77xx
+2025-05-31 12:31:09,952 - INFO - 
+Processing image: test_photo.jpg
+2025-05-31 12:31:10,111 - WARNING - Found 31 digits instead of 16
+2025-05-31 12:31:10,676 - WARNING - Found 18 digits instead of 16
+2025-05-31 12:31:10,957 - INFO - Detected card number: 7777 7777 7777 7777
+2025-05-31 12:32:52,263 - INFO - Loading pre-trained model...
+2025-05-31 12:32:52,331 - INFO - Model loaded successfully
+2025-05-31 12:32:52,331 - INFO - 
+Processing image: test_image.jpg
+2025-05-31 12:32:52,433 - WARNING - Found 14 digits instead of 16
+2025-05-31 12:32:52,744 - INFO - Detected card number: 7777 7777 7777 77xx
+2025-05-31 12:32:52,744 - INFO - 
+Processing image: test_photo.jpg
+2025-05-31 12:32:52,897 - WARNING - Found 31 digits instead of 16
+2025-05-31 12:32:53,532 - WARNING - Found 18 digits instead of 16
+2025-05-31 12:32:53,859 - INFO - Detected card number: 7777 7777 7777 7777
+2025-05-31 12:39:46,342 - INFO - Loading pre-trained model...
+2025-05-31 12:39:46,413 - INFO - Model loaded successfully
+2025-05-31 12:39:46,413 - INFO - 
+Processing image: test_image.jpg
+2025-05-31 12:39:46,984 - WARNING - Found 1 digits instead of 16
+2025-05-31 12:39:47,295 - INFO - Detected card number: 7xxx xxxx xxxx xxxx
+2025-05-31 12:39:47,295 - INFO - 
+Processing image: test_photo.jpg
+2025-05-31 12:39:47,913 - WARNING - Found 2 digits instead of 16
+2025-05-31 12:39:48,229 - WARNING - Found 1 digits instead of 16
+2025-05-31 12:39:48,248 - INFO - Detected card number: 77xx xxxx xxxx xxxx
+2025-05-31 12:41:25,904 - INFO - Loading pre-trained model...
+2025-05-31 12:41:25,969 - INFO - Model loaded successfully
+2025-05-31 12:41:25,970 - INFO - 
+Processing image: test_gorsel.jpg
+2025-05-31 12:41:26,613 - WARNING - Found 42 digits instead of 16
+2025-05-31 12:41:27,632 - WARNING - Found 47 digits instead of 16
+2025-05-31 12:41:28,418 - INFO - Detected card number: 7777 7777 7777 7777
+2025-05-31 12:41:28,418 - INFO - 
+Processing image: test_image.jpg
+2025-05-31 12:41:28,960 - WARNING - Found 14 digits instead of 16
+2025-05-31 12:41:29,488 - INFO - Detected card number: 7777 7777 7777 77xx
+2025-05-31 12:41:29,489 - INFO - 
+Processing image: test_photo.jpg
+2025-05-31 12:41:30,116 - WARNING - Found 29 digits instead of 16
+2025-05-31 12:41:30,956 - WARNING - Found 21 digits instead of 16
+2025-05-31 12:41:31,322 - INFO - Detected card number: 7777 7777 7777 7777
